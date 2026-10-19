@@ -1,6 +1,6 @@
 # Development handoff
 
-**Updated:** 2026-10-19 — M2.2 Final Documentation Reconciliation v1.0
+**Updated:** 2026-10-20 — M2.2 Phase 1B Documentation Status Reconciliation
 
 ## Current checkpoint
 
@@ -13,18 +13,22 @@
 | M1.1A/M1.1B reconciliation and preflight | **Completed**. |
 | M1.2A Workspace Foundation | **Accepted**. |
 | M1.2B Core Contracts | **Accepted with non-blocking issues**. |
-| M1 — Foundation & Contracts | **Complete / Accepted**. |
-| M2.1 — Registry & Resolver architecture and documentation | **Accepted / Complete**. |
-| M2.2 design freeze | **Approved**; seven exact-parameter groups synchronized; Clarification Amendments v1.0–v1.3 (ADR-021–ADR-024) approved and documented; documentation **Pending final user acceptance**; implementation **NOT AUTHORIZED**. |
-| M2.3 | **Not Started**; M2.2 tests **NOT EXECUTED**. |
-| Phase 4 — Controlled Implementation | **Not started**; M1 is complete; M2.2 design approval does not authorize implementation. |
+| M1 — Foundation & Contracts | **Complete / Accepted / Pushed**. |
+| M2.1 — Registry & Resolver architecture | **Complete**. |
+| M2.2 design and documentation | **ACCEPTED / PUSHED** per user report; baseline commit `21dbe8a` user-reported; seven exact-parameter groups synchronized; ADR-021 through ADR-024 approved and documented. |
+| M2.2 Registry Phase 1A read-only preflight | **COMPLETED**; inspection and planning only. |
+| M2.2 Phase 1B asset-tree integrity | **ACCEPTED / COMMITTED LOCALLY** as `f76428d` per user report; **NOT YET PUSHED**. |
+| Phase 1B validation | 22/22 focused tests, root typecheck, Biome, 4/4 independent SHA-256 fixture checks, and registry package build **passed per user report**. |
+| M2.2 overall implementation | **IN PROGRESS / INCOMPLETE**. |
+| M2.3 resolver | **NOT STARTED**. |
+| Phase 4 — Controlled Implementation | **In progress**; overall M2.2 implementation is incomplete; no deployment or release is claimed. |
 | M1.2B contract tests | **29 reported passing**; not rerun during the read-only acceptance audit. |
 | GitHub repository | User confirms private `inumakidev/DevOrBit`, branch `master`; initial commit pushed to `origin/master`. |
 | Hosted GitHub Actions | Successful per user-provided screenshots: `Workspace validation` run #1 / ID `39215771440`; `validate` job ID `117939137329`. |
-| Completed this session | M2.2 clarification amendment synchronized in the canonical specification and decision record; final documentation acceptance remains outstanding. |
-| Next task | Conduct the final M2.2 documentation acceptance audit and await user acceptance. |
+| Completed this session | M2.2 Phase 1B documentation status synchronized to the user-reported acceptance and local commit state; Phase 1A read-only preflight remains completed. |
+| Next task | Track remaining M2.2 work; obtain separate authorization before the next implementation slice. |
 
-The canonical M2.2 design, seven exact-parameter groups, and approved Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are documented in [11-registry-and-resolver-architecture.md](../main/11-registry-and-resolver-architecture.md) and [DECISIONS.md](../development/DECISIONS.md). M1 remains **Complete / Accepted**. Approved design is not evidence of implementation; M2.2 tests are **NOT EXECUTED**. Documentation remains pending final user acceptance.
+The canonical M2.2 design, seven exact-parameter groups, and approved Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are documented in [11-registry-and-resolver-architecture.md](../main/11-registry-and-resolver-architecture.md) and [DECISIONS.md](../development/DECISIONS.md). M1 remains **Complete / Accepted / Pushed**; M2.1 architecture is **Complete**. M2.2 design and documentation are accepted and pushed according to the user; baseline commit `21dbe8a` is user-reported. Phase 1B asset-tree integrity is accepted and committed locally as `f76428d` per user report, but not pushed; Phase 1B validation results are user-reported. Overall M2.2 implementation remains **IN PROGRESS / INCOMPLETE**. M2.3 is **NOT STARTED**.
 
 **Historical audit finding, superseded by approved ADR-021:** the final documentation audit identified the `authorizedSigners` ordering comparator, diagnostic comparator, and 256-attestation count scope as clarification items. ADR-021 and the canonical specification now resolve these items: sort `authorizedSigners` by ascending ordinal ASCII `keyId` and reject duplicates; order diagnostics by `(code, severity, assetId, assetVersion, path, message)` using ordinal comparison and empty strings for absent optional fields; cap detached attestation envelopes at 256 per asset-version lookup, counted before cryptographic validation.
 
@@ -34,7 +38,7 @@ This preserves the audit-time record of the ADR-021 clarification. ADR-024 later
 
 All nine specification groups are approved at design level: (1) registry layout and file-only integrity; (2) detached Ed25519 attestations; (3) trust-policy protocol; (4) protected high-water state; (5) restricted Git object verification; (6) commit/tree parsing; (7) pinned asset binding; (8) bounded resources, diagnostics, and snapshots; and (9) independent test vectors. The Final Protocol Amendment supersedes conflicting earlier proposals, including the administrator rotation rule and commit parser compatibility. Detailed normative requirements are kept in the canonical architecture document rather than duplicated here.
 
-**Implementation authorization:** None. M2.2 implementation is **NOT AUTHORIZED** and requires separate user authorization. M2.2A implementation planning may proceed only after documentation acceptance and separate authorization. M2.3 is **NOT STARTED**.
+**Implementation boundary:** Phase 1B is the only M2.2 implementation slice reported accepted and committed locally; no push is reported. Overall M2.2 remains incomplete. Obtain separate authorization before any subsequent implementation slice. M2.3 is **NOT STARTED**.
 
 **Outstanding implementation-time Windows/Git/OS validation gates:** ACL enforcement; OS-protected key behavior and provider integrity; reparse-point and executable-substitution defenses; Git configuration isolation; actual no-network/no-write behavior; process-tree termination; source mutation/filesystem-race handling; crash consistency; and the supported Windows/Git compatibility baseline. No Windows security testing has been completed or claimed. Privileged rollback by restoring both policy and protected state remains an explicit limitation.
 

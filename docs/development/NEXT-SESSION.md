@@ -6,17 +6,19 @@
 - M1.1 Environment Inspection and M1.1A/M1.1B reconciliation/preflight: **Completed**.
 - M1.2A — Workspace Foundation: **Accepted**.
 - M1.2B — Core Contracts: **Accepted with non-blocking issues**.
-- M1 — Foundation & Contracts: **Complete / Accepted**.
-- M2.1 — Registry & Resolver architecture and documentation: **Accepted / Complete**.
-- M2.2 design freeze: **Approved**; seven exact-parameter gaps synchronized; Clarification Amendments v1.0–v1.3 (ADR-021–ADR-024) approved and documented; final documentation acceptance audit pending; implementation **NOT AUTHORIZED**.
-- M2.3: **Not Started**.
-- M2.2 tests: **NOT EXECUTED**.
+- M1 — Foundation & Contracts: **COMPLETE / ACCEPTED / PUSHED**.
+- M2.1 — Registry & Resolver architecture: **COMPLETE**.
+- M2.2 design and specification: **ACCEPTED / PUSHED**; user reports baseline commit `21dbe8a`; seven exact-parameter groups synchronized; ADR-021 through ADR-024 **APPROVED / DOCUMENTED**.
+- M2.2 Registry Phase 1B asset-tree integrity: **ACCEPTED / COMMITTED LOCALLY** as `f76428d` per user report; **NOT YET PUSHED**.
+- Phase 1B validation: 22/22 focused tests, root typecheck, Biome, 4/4 independent SHA-256 fixture checks, and registry package build **PASSED per user report**.
+- M2.2 overall implementation: **IN PROGRESS / INCOMPLETE**.
+- M2.3 resolver: **NOT STARTED**.
 - Contract tests: **29 reported passing** in the M1.2B implementation session; not rerun during the read-only acceptance audit.
 - Hosted GitHub Actions: **Successful**, supported by user-provided screenshots; run/job identifiers recorded below.
 - GitHub repository: **Private per user confirmation**, `inumakidev/DevOrBit`, branch `master`; initial commit and push confirmed.
-- Completed this session: M2.2 Clarification Amendment v1.3 synchronized into the canonical specification and decision record; final documentation acceptance remains pending.
-- Current task: Final M2.2 documentation acceptance audit and user review.
-- Next gate: Do not mark documentation closure complete until user review. After acceptance, M2.2A implementation planning may proceed only with separate authorization; implementation itself remains unauthorized.
+- Completed: M2.2 documentation acceptance status sync and Registry Phase 1A read-only preflight. Phase 1B asset-tree implementation is accepted and committed locally per user report.
+- Current task: Phase 1B documentation status sync is complete; record the implementation as locally committed and not yet pushed, per user report.
+- Next gate: M2.2 implementation remains incomplete. Obtain separate authorization before beginning any subsequent implementation slice; M2.3 has not started.
 
 Read the required continuity files in order as listed in [AGENTS.md](../../AGENTS.md), then inspect the actual repository before any future implementation.
 
@@ -36,9 +38,9 @@ The M2.2 freeze resolves file-only hashing with empty directories excluded, atte
 
 ## Current M2.2 documentation checkpoint
 
-The M2.2 design freeze and all nine specification groups are approved. The seven exact-parameter gaps and approved Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are documented in [the canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md). ADR-024 applies JCS canonicalization to the diagnostic `detail` comparison value and supersedes ADR-023 only for its detail key-ordering and serialization rule. Final documentation acceptance audit is pending; implementation is **NOT AUTHORIZED**.
+The M2.2 design and documentation are accepted and pushed according to the user; baseline commit `21dbe8a` is user-reported. The seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are documented in [the canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md). ADR-024 applies JCS canonicalization to the diagnostic `detail` comparison value and supersedes ADR-023 only for its detail key-ordering and serialization rule. Phase 1B asset-tree integrity is accepted and committed locally as `f76428d` per user report, but has not been pushed. Overall M2.2 implementation remains **IN PROGRESS / INCOMPLETE**; M2.3 is **NOT STARTED**.
 
-After documentation acceptance, M2.2A implementation planning requires a separate authorization. No M2.2 implementation, tests, dependency changes, or Git/GitHub operations are authorized by this checkpoint.
+The user reports Phase 1B validation as passed: 22/22 focused tests, root typecheck, Biome, 4/4 independent SHA-256 fixture checks, and registry package build. These reported Phase 1B results do not imply full M2.2 completion, deployment, or release. Any subsequent implementation slice requires separate explicit authorization. Git/GitHub operations remain user-managed.
 
 ## Historical M2 planning handoff — Registry & Resolver
 

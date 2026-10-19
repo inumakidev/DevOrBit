@@ -4,7 +4,7 @@
 
 DevOrbit is an approved design for a versioned, modular toolkit that combines reusable AI coding skills, policies, repeatable workflows, technology-stack profiles, safe project installation, agent adapters, quality evaluation, governance, and project continuity.
 
-> **Project status:** Documentation Foundation is **Approved**. M1.2A — Workspace Foundation is **Accepted**. M1.2B — Core Contracts is **Accepted with non-blocking issues**. M1 — Foundation & Contracts is **Complete / Accepted**. The user-provided screenshots show successful hosted GitHub Actions validation; see [TESTING-LOG.md](docs/development/TESTING-LOG.md). M2.1 architecture and documentation are **Accepted / Complete**. M2.2 design freeze is **Approved**; the seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are synchronized, approved, and documented; final M2.2 documentation acceptance is **Pending**. M2.2 implementation is **NOT AUTHORIZED**. M2.3 is **NOT STARTED**; M2.2 tests are **NOT EXECUTED**.
+> **Project status:** Documentation Foundation is **Approved**. M1.2A — Workspace Foundation is **Accepted**. M1.2B — Core Contracts is **Accepted with non-blocking issues**. M1 — Foundation & Contracts is **Complete / Accepted / Pushed**. The user-provided screenshots show successful hosted GitHub Actions validation; see [TESTING-LOG.md](docs/development/TESTING-LOG.md). M2.1 architecture is **Complete**. M2.2 design and documentation are **ACCEPTED / PUSHED** per user report; baseline commit `21dbe8a` is user-reported; seven exact-parameter groups and ADR-021 through ADR-024 are synchronized, approved, and documented. Phase 1B asset-tree integrity implementation is **ACCEPTED / COMMITTED LOCALLY** (commit `f76428d`, user-reported), **NOT YET PUSHED**. The user reports 22/22 focused tests, root typecheck, Biome, 4/4 independent SHA-256 fixture checks, and registry package build passed. Overall M2.2 implementation is **IN PROGRESS / INCOMPLETE**. M2.3 is **NOT STARTED**.
 
 ## What DevOrbit is intended to provide
 
@@ -27,13 +27,13 @@ See the [approved overview](docs/main/01-overview.md), [architecture](docs/main/
 | Documentation Foundation | Approved |
 | M1.1 — Environment Inspection | Completed |
 | M1.1A — Pre-implementation Reconciliation | Completed |
-| Phase 4 — Controlled Implementation | Not Started |
+| Phase 4 — Controlled Implementation | In Progress — M2.2 implementation ongoing |
 | M1.2A — Workspace Foundation | Accepted |
 | M1.2B — Core Contracts | Accepted with non-blocking issues |
 | M1 — Foundation & Contracts | Complete / Accepted |
 | M2.1 — Registry & Resolver architecture | Accepted; documentation closure complete |
-| M2.2 design freeze | Approved; seven exact-parameter groups synchronized; ADR-021 through ADR-024 approved and documented; final documentation acceptance pending; implementation NOT AUTHORIZED |
-| M2.3 | NOT STARTED; M2.2 tests NOT EXECUTED |
+| M2.2 Registry, Integrity & Provenance | Design/documentation ACCEPTED / PUSHED (baseline `21dbe8a`, user-reported); Phase 1B asset-tree integrity ACCEPTED and committed locally as `f76428d` (user-reported), NOT YET PUSHED; 22/22 focused tests, root typecheck, Biome, 4/4 independent fixture checks, and registry package build passed per user report; overall implementation IN PROGRESS / INCOMPLETE |
+| M2.3 Resolver | NOT STARTED |
 | M1.2B contract tests | 29 reported passing; not rerun during acceptance audit |
 | Initial commit / push | User-confirmed; commit `6c2f9985031104d36e9a0949a3b3b2b4862b3a2d` pushed to `origin/master` |
 | Hosted GitHub Actions | Successful per user-provided screenshots; run #1 and job details in [TESTING-LOG.md](docs/development/TESTING-LOG.md) |
@@ -52,7 +52,7 @@ M1.2A acceptance covers the workspace foundation. M1.2B acceptance covers core c
 
 ## Development safety
 
-M1 is Complete / Accepted. M2.1 architecture and documentation are accepted. M2.2 design is approved; the seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are synchronized and documented, but final user acceptance remains pending and implementation is NOT AUTHORIZED. Do not imply that M2.2 functionality is implemented or available. M2.3 is NOT STARTED; M2.2 tests are **NOT EXECUTED**. Git/GitHub operations remain exclusively user-managed. Follow [AGENTS.md](AGENTS.md) and the [agent onboarding guide](docs/continuity/AGENT-ONBOARDING.md) before development.
+M1 is Complete / Accepted / Pushed. M2.1 architecture is complete. M2.2 design and documentation are ACCEPTED / PUSHED per user report. Phase 1B asset-tree integrity implementation is ACCEPTED and committed locally as `f76428d` per user report, but is NOT YET PUSHED. The user reports its focused tests and validation passed. Overall M2.2 implementation remains IN PROGRESS / INCOMPLETE; do not imply the complete M2.2 functionality is implemented, deployed, or released. M2.3 is NOT STARTED. Git/GitHub operations remain exclusively user-managed. Follow [AGENTS.md](AGENTS.md) and the [agent onboarding guide](docs/continuity/AGENT-ONBOARDING.md) before development.
 
 ## Approved planning baseline
 
