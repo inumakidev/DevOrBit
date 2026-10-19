@@ -1,0 +1,57 @@
+{
+  "manifestVersion": 1,
+  "assets": [
+    {
+      "id": "skill.frontend.component-design",
+      "kind": "skill",
+      "version": "1.0.0",
+      "contractVersion": "1.0.0",
+      "description": "First entry.",
+      "domain": "frontend",
+      "dependencies": { "required": [], "optional": [] },
+      "compatibility": {
+        "agents": [],
+        "stacks": [],
+        "modes": [],
+        "capabilities": []
+      },
+      "permissions": [],
+      "integrity": {
+        "algorithm": "sha256",
+        "digest": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      },
+      "provenance": {
+        "repository": "devorbit/devorbit",
+        "path": "content/skills/first",
+        "revision": "0123456789abcdef0123456789abcdef01234567"
+      },
+      "lifecycleStatus": "draft"
+    },
+    {
+      "id": "skill.frontend.component-design",
+      "kind": "skill",
+      "version": "2.0.0",
+      "contractVersion": "1.0.0",
+      "description": "Second entry with the exact same ID.",
+      "domain": "frontend",
+      "dependencies": { "required": [], "optional": [] },
+      "compatibility": {
+        "agents": [],
+        "stacks": [],
+        "modes": [],
+        "capabilities": []
+      },
+      "permissions": [],
+      "integrity": {
+        "algorithm": "sha256",
+        "digest": "abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789"
+      },
+      "provenance": {
+        "repository": "devorbit/devorbit",
+        "path": "content/skills/second",
+        "revision": "abcdef0123456789abcdef0123456789abcdef0123"
+      },
+      "lifecycleStatus": "draft"
+    }
+  ]
+}

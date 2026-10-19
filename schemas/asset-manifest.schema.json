@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "manifestVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "skill",
+              "workflow",
+              "policy",
+              "tool",
+              "stack-profile",
+              "adapter",
+              "pack"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
+          },
+          "contractVersion": {
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "domain": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+          },
+          "dependencies": {
+            "type": "object",
+            "properties": {
+              "required": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    },
+                    "versionRange": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id", "versionRange"],
+                  "additionalProperties": false
+                }
+              },
+              "optional": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*\\.[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    },
+                    "versionRange": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id", "versionRange"],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": ["required", "optional"],
+            "additionalProperties": false
+          },
+          "compatibility": {
+            "type": "object",
+            "properties": {
+              "agents": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+                }
+              },
+              "stacks": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+                }
+              },
+              "modes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": ["ai-only", "project-only", "combined"]
+                }
+              },
+              "capabilities": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+                }
+              }
+            },
+            "required": ["agents", "stacks", "modes", "capabilities"],
+            "additionalProperties": false
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": ["id", "reason"],
+              "additionalProperties": false
+            }
+          },
+          "integrity": {
+            "type": "object",
+            "properties": {
+              "algorithm": {
+                "type": "string",
+                "const": "sha256"
+              },
+              "digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": ["algorithm", "digest"],
+            "additionalProperties": false
+          },
+          "provenance": {
+            "type": "object",
+            "properties": {
+              "repository": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\\/[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?$"
+              },
+              "path": {
+                "type": "string"
+              },
+              "revision": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$"
+              }
+            },
+            "required": ["repository", "path", "revision"],
+            "additionalProperties": false
+          },
+          "lifecycleStatus": {
+            "type": "string",
+            "enum": ["draft", "review", "validated", "stable", "deprecated"]
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "version",
+          "contractVersion",
+          "description",
+          "domain",
+          "dependencies",
+          "compatibility",
+          "permissions",
+          "integrity",
+          "provenance",
+          "lifecycleStatus"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["manifestVersion", "assets"],
+  "additionalProperties": false
+}

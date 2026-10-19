@@ -1,0 +1,49 @@
+{
+  "manifestVersion": 1,
+  "assets": [
+    {
+      "id": "skill.frontend.component-design",
+      "kind": "skill",
+      "version": "1.2.0+build.7",
+      "contractVersion": "1.0.0-rc.1",
+      "description": "Guidance for designing reusable interface components.",
+      "domain": "frontend",
+      "dependencies": {
+        "required": [
+          {
+            "id": "policy.security.baseline",
+            "versionRange": "^1.0.0"
+          }
+        ],
+        "optional": [
+          {
+            "id": "skill.frontend.animation",
+            "versionRange": "*"
+          }
+        ]
+      },
+      "compatibility": {
+        "agents": ["copilot-vscode"],
+        "stacks": ["react-vite"],
+        "modes": ["ai-only"],
+        "capabilities": ["wcag-2.2-aa"]
+      },
+      "permissions": [
+        {
+          "id": "project.read",
+          "reason": "Review project context before applying design guidance."
+        }
+      ],
+      "integrity": {
+        "algorithm": "sha256",
+        "digest": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      },
+      "provenance": {
+        "repository": "devorbit/devorbit",
+        "path": "content/skills/frontend/component-design",
+        "revision": "0123456789abcdef0123456789abcdef01234567"
+      },
+      "lifecycleStatus": "stable"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@devorbit/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "pnpm --filter @devorbit/cli exec tsc --noEmit -p ../../packages/core/tsconfig.json",
+    "build": "pnpm --filter @devorbit/cli exec tsc -p ../../packages/core/tsconfig.json"
+  },
+  "dependencies": {
+    "semver": "7.8.5",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/semver": "7.8.0"
+  }
+}

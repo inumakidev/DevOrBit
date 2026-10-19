@@ -1,0 +1,21 @@
+{
+  "name": "devorbit",
+  "private": true,
+  "packageManager": "pnpm@10.16.0",
+  "engines": {
+    "node": ">=22.14.0 <23",
+    "pnpm": "10.16.0"
+  },
+  "scripts": {
+    "lint": "biome check .",
+    "typecheck": "pnpm --filter @devorbit/cli typecheck && pnpm --filter @devorbit/core typecheck",
+    "build": "pnpm --filter @devorbit/cli build && pnpm --filter @devorbit/core build",
+    "test": "vitest run",
+    "schema:generate": "pnpm --filter @devorbit/core build && node --input-type=module -e \"import { writeFileSync } from 'node:fs'; import { assetManifestJsonSchema } from './packages/core/dist/contracts/asset-manifest.js'; writeFileSync('schemas/asset-manifest.schema.json', JSON.stringify(assetManifestJsonSchema, null, 2) + '\\n');\" && pnpm exec biome format --write schemas/asset-manifest.schema.json"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "@biomejs/biome": "2.5.15",
+    "vitest": "4.1.5"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "manifestVersion": 1,
+  "assets": [
+    {
+      "id": "skill.frontend.component-design",
+      "kind": "skill",
+      "version": "v1.2.0",
+      "contractVersion": "1.0.0",
+      "description": "A fixture with a leading v in the version.",
+      "domain": "frontend",
+      "dependencies": { "required": [], "optional": [] },
+      "compatibility": {
+        "agents": [],
+        "stacks": [],
+        "modes": [],
+        "capabilities": []
+      },
+      "permissions": [],
+      "integrity": {
+        "algorithm": "sha256",
+        "digest": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      },
+      "provenance": {
+        "repository": "devorbit/devorbit",
+        "path": "content/skills/version",
+        "revision": "0123456789abcdef0123456789abcdef01234567"
+      },
+      "lifecycleStatus": "draft"
+    }
+  ]
+}
