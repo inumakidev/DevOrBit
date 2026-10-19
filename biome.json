@@ -12,6 +12,9 @@
       "packages/core/src/**/*.ts",
       "packages/core/package.json",
       "packages/core/tsconfig.json",
+      "packages/registry/src/**/*.ts",
+      "packages/registry/package.json",
+      "packages/registry/tsconfig.json",
       "tests/**/*.ts",
       "tests/**/*.json",
       "schemas/**/*.json"

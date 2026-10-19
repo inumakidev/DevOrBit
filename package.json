@@ -8,8 +8,8 @@
   },
   "scripts": {
     "lint": "biome check .",
-    "typecheck": "pnpm --filter @devorbit/cli typecheck && pnpm --filter @devorbit/core typecheck",
-    "build": "pnpm --filter @devorbit/cli build && pnpm --filter @devorbit/core build",
+    "typecheck": "pnpm --filter @devorbit/cli typecheck && pnpm --filter @devorbit/core typecheck && pnpm --filter @devorbit/registry typecheck",
+    "build": "pnpm --filter @devorbit/cli build && pnpm --filter @devorbit/core build && pnpm --filter @devorbit/registry build",
     "test": "vitest run",
     "schema:generate": "pnpm --filter @devorbit/core build && node --input-type=module -e \"import { writeFileSync } from 'node:fs'; import { assetManifestJsonSchema } from './packages/core/dist/contracts/asset-manifest.js'; writeFileSync('schemas/asset-manifest.schema.json', JSON.stringify(assetManifestJsonSchema, null, 2) + '\\n');\" && pnpm exec biome format --write schemas/asset-manifest.schema.json"
   },

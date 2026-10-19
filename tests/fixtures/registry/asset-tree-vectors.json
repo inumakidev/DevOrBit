@@ -1,0 +1,58 @@
+{
+  "algorithm": "devorbit-asset-tree-v1",
+  "independentVerification": {
+    "streamConstruction": "framingStreamHex values were assembled directly from the published byte-framing rules and the listed path/byte inputs, independently of the registry implementation.",
+    "verifier": ".NET 6 or later: Convert.ToHexString(SHA256.HashData(Convert.FromHexString(framingStreamHex))).ToLowerInvariant().",
+    "reproduction": "For each vector, decode framingStreamHex as hexadecimal bytes, compute SHA-256 over those exact bytes with the stated verifier, and compare the lowercase hexadecimal result with expectedDigest."
+  },
+  "vectors": [
+    {
+      "name": "hello-file",
+      "files": [
+        {
+          "path": "hello.txt",
+          "bytesHex": "48656c6c6f0a"
+        }
+      ],
+      "framingStreamHex": "4445564f524249542d41535345542d5452454500763100460000000968656c6c6f2e747874000000000000000648656c6c6f0a",
+      "expectedDigest": "cb2c71f96d176e5746c4a55479aaf483268424175f0b78546d80a0f97da1c896"
+    },
+    {
+      "name": "empty-file",
+      "files": [
+        {
+          "path": "empty.bin",
+          "bytesHex": ""
+        }
+      ],
+      "framingStreamHex": "4445564f524249542d41535345542d54524545007631004600000009656d7074792e62696e0000000000000000",
+      "expectedDigest": "e2dc049b6bcc63f2036d1fff1e1e338a34ba890e1dd8a592db2e9f6b4b4fd5a6"
+    },
+    {
+      "name": "multiple-files-discovered-in-reverse-order",
+      "files": [
+        {
+          "path": "z.txt",
+          "bytesHex": "41"
+        },
+        {
+          "path": "a.bin",
+          "bytesHex": "00ff"
+        }
+      ],
+      "framingStreamHex": "4445564f524249542d41535345542d54524545007631004600000005612e62696e000000000000000200ff46000000057a2e747874000000000000000141",
+      "expectedDigest": "ec96d909fe3c6bb591c123e0f0e8cc8c25e512c74ca158fd2ed47f6ea67aaf07"
+    },
+    {
+      "name": "changed-content",
+      "files": [
+        {
+          "path": "hello.txt",
+          "bytesHex": "48656c6c6f0b"
+        }
+      ],
+      "framingStreamHex": "4445564f524249542d41535345542d5452454500763100460000000968656c6c6f2e747874000000000000000648656c6c6f0b",
+      "expectedDigest": "cfeb11bf97a2ffca0b8d5377e5ae5f1c10dd8d9388ed93a7e0b2ff2becf9d8f5"
+    }
+  ]
+}
