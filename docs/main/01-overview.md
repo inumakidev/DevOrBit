@@ -47,7 +47,7 @@ Use the following labels consistently:
 - **Deferred** — intentionally postponed to a later scope.
 - **Not Verified** — no sufficient test or compatibility evidence exists.
 
-The current project status is documented in [CURRENT-STATUS.md](../development/CURRENT-STATUS.md). Phase 1/2/3 and Documentation Foundation are Approved. M1.1 Environment Inspection and M1.1A/M1.1B reconciliation and preflight are Completed. Phase 4 implementation is In Progress; M1.2A Workspace Foundation is Accepted; M1.2B Core Contracts is Accepted with non-blocking issues; M1 Foundation & Contracts remains In Progress and is not complete; M1.3 is Not Started. The M1.2B implementation session reported 29 passing contract tests and successful local validation, not independently rerun during the acceptance audit. No hosted GitHub Actions result has been observed. Broader end-to-end/product application tests have not been run.
+The current project status is documented in [CURRENT-STATUS.md](../development/CURRENT-STATUS.md). Phase 1/2/3 and Documentation Foundation are Approved. M1.2A Workspace Foundation is Accepted; M1.2B Core Contracts is Accepted with non-blocking issues; M1 Foundation & Contracts is Complete / Accepted. The implementation session reported 29 passing contract tests and successful local validation. User-provided GitHub screenshots show successful hosted Actions run #1 and its `validate` job; the run and job identifiers and evidence limits are recorded in [TESTING-LOG.md](../development/TESTING-LOG.md). M2 — Registry & Resolver is next, Planning Pending; no M2 implementation has started. Broader end-to-end/product application tests have not been run.
 
 ## Documentation navigation
 

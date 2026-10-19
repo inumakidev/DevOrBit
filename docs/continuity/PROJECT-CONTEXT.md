@@ -13,7 +13,7 @@ The project is a versioned, modular AI development toolkit design for reusable s
 - 17 skill domains, 84 candidate skills, 8 packs, 12 workflows, 7 governance systems.
 - Official initial stack profiles: Next.js and Laravel; custom stacks must be supported.
 - Initial agent targets: Codex and specifically validated Copilot environments; Claude Code and Cursor later. Copilot VS Code, CLI, and cloud are distinct validation targets.
-- TypeScript, pinned Node.js LTS, pnpm workspaces, Zod/JSON Schema, Vitest, and GitHub Actions are approved technology direction. Exact tool versions and selected CLI/lint tools remain for M1.
+- TypeScript, pinned Node.js LTS, pnpm workspaces, Zod/JSON Schema, Vitest, and GitHub Actions are approved technology direction. M1 selected exact tool versions and CLI/lint tools; see [CURRENT-STATUS.md](../development/CURRENT-STATUS.md).
 - Six releases/milestones from V0.1 through V1.0 as described in [the roadmap](../development/ROADMAP.md).
 
 ## Current status
@@ -27,18 +27,19 @@ The project is a versioned, modular AI development toolkit design for reusable s
 - Phase 4 implementation: In Progress.
 - M1.2A Workspace Foundation: Accepted.
 - M1.2B Core Contracts: Accepted with non-blocking issues.
-- M1 — Repository Foundation & Contracts: In Progress; not complete.
+- M1 — Foundation & Contracts: Complete / Accepted.
 - M1.2B contract tests: 29 reported passing; not independently rerun during the acceptance audit.
-- Hosted GitHub Actions: No result observed.
-- M1.3: Not Started.
+- GitHub initial commit and push: User-confirmed.
+- Hosted GitHub Actions: Successful per user-provided screenshots; run #1 / ID `39215771440`, `validate` job ID `117939137329`.
+- M2 — Registry & Resolver: Planning pending; no implementation started.
 
-M1.2A established and accepted the workspace foundation and minimal `@devorbit/cli` entry point at version `0.0.0`. M1.2B Core Contracts was accepted with non-blocking issues. Its implementation session reported 29 passing Vitest contract tests and successful local install, workspace discovery, typecheck, lint, build, schema generation, CLI smoke checks, core import, and frozen-lockfile checks; the read-only acceptance audit did not rerun them. This does not establish hosted CI success, broader end-to-end/product test coverage, or implementation of either engine, an installer, skills, or adapters. M1 remains incomplete until the remaining GitHub readiness gates, hosted CI evidence, and final acceptance decision are recorded.
+M1.2A established and accepted the workspace foundation and minimal `@devorbit/cli` entry point at version `0.0.0`. M1.2B Core Contracts was accepted with non-blocking issues. Its implementation session reported 29 passing Vitest contract tests and successful local install, workspace discovery, typecheck, lint, build, schema generation, CLI smoke checks, core import, and frozen-lockfile checks; the read-only acceptance audit did not rerun them. User-provided screenshots identify the initial commit/push to the private GitHub repository and show successful hosted workflow `Workspace validation` run #1 and `validate` job. All six M1 requirements are accepted; M1 is Complete / Accepted. The GitHub UI annotation warning and notice remain uninspected and unresolved, and are not M1 blockers. This does not establish broader end-to-end/product test coverage or implementation of either engine, an installer, skills, or adapters.
 
-The read-only Git readiness audit observed branch `master`, zero commits, and a locally configured remote. Intended GitHub ownership, repository name/visibility, existence, and accessibility remain Not Verified. No staging, commit, push, fetch, or pull occurred during that audit or this documentation reconciliation. The two DOCX source documents remain local and unchanged and are proposed for exclusion from the first commit unless separately approved.
+User-confirmed GitHub record: private repository `https://github.com/inumakidev/DevOrBit`, branch `master`, initial commit `6c2f9985031104d36e9a0949a3b3b2b4862b3a2d` (`chore: initialize DevOrbit foundation and core contracts`), pushed to `origin/master`. User-provided screenshots show run ID `39215771440`, job ID `117939137329`, 32-second workflow and 28-second job, with install/lint/typecheck/build/test passing; see [TESTING-LOG.md](../development/TESTING-LOG.md). The two DOCX source documents remain local and unchanged. This documentation-only reconciliation did not run Git commands or contact GitHub.
 
 ## Safety boundaries
 
-Do not change approved decisions without explicit approval. M1.2B is accepted; do not begin M1.3 or later milestones without explicit authorization. Do not initialize frameworks, provision databases, deploy, contact GitHub, stage, commit, push, fetch, pull, or overwrite existing files without the required authorization. Keep secrets and personal data out of logs and evidence.
+Do not change approved decisions without explicit approval. M1 is complete; M2 planning is pending. Do not begin M2 implementation without separate explicit authorization. Do not initialize frameworks, provision databases, deploy, contact GitHub, stage, commit, push, fetch, pull, or overwrite existing files without the required authorization. Keep secrets and personal data out of logs and evidence.
 
 ## Source precedence
 

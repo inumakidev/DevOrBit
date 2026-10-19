@@ -1,6 +1,6 @@
 # Development handoff
 
-**Updated:** 2026-10-19 — M1 documentation reconciliation after M1.2B acceptance
+**Updated:** 2026-10-19 — M1 final closure review
 
 ## Current checkpoint
 
@@ -13,13 +13,14 @@
 | M1.1A/M1.1B reconciliation and preflight | **Completed**. |
 | M1.2A Workspace Foundation | **Accepted**. |
 | M1.2B Core Contracts | **Accepted with non-blocking issues**. |
-| M1 — Repository Foundation & Contracts | **In progress; not complete**. |
-| M1.3 | **Not Started**. |
-| Phase 4 — Controlled Implementation | **In progress**, limited to accepted M1.2A and M1.2B. |
+| M1 — Foundation & Contracts | **Complete / Accepted**. |
+| M2 — Registry & Resolver | **Planning pending**; no implementation has started. |
+| Phase 4 — Controlled Implementation | **In progress**; M1 is complete, M2 planning pending, and no M2 implementation has started. |
 | M1.2B contract tests | **29 reported passing**; not rerun during the read-only acceptance audit. |
-| Hosted GitHub Actions | **No result observed**. |
-| Completed this session | M1 documentation reconciliation. |
-| Next task | Confirm intended GitHub owner, repository name, and visibility; do not contact the remote or perform Git mutations until separately authorized. Then complete remaining M1 gates; do not begin M1.3. |
+| GitHub repository | User confirms private `inumakidev/DevOrBit`, branch `master`; initial commit pushed to `origin/master`. |
+| Hosted GitHub Actions | Successful per user-provided screenshots: `Workspace validation` run #1 / ID `39215771440`; `validate` job ID `117939137329`. |
+| Completed this session | M1 final closure documentation and acceptance review. |
+| Next task | Plan M2 against approved sources; planning only, no implementation without separate authorization. |
 
 ## M1.2A implementation
 
@@ -51,20 +52,21 @@ The implementation session reported PASS for dependency installation, workspace 
 
 M1.2B was accepted with non-blocking issues. It added 14 files: the `@devorbit/core` package, manifest/error contract sources, generated asset-manifest JSON Schema, seven valid/invalid fixtures, and the Vitest contract test file. Four configuration files were modified: root `package.json`, `biome.json`, `.github/workflows/ci.yml`, and `pnpm-lock.yaml`.
 
-Exact dependencies: Zod 4.6.7, semver 7.8.5, `@types/semver` 7.8.0, and Ajv 8.20.0. The implementation session reported 29 passing Vitest tests and successful local install, workspace discovery, typecheck, lint, build, schema generation consistency, CLI help/version, core package import, and frozen-lockfile installation. These results were not independently rerun during the acceptance audit. No hosted GitHub Actions run has been observed; see [TESTING-LOG.md](../development/TESTING-LOG.md).
+Exact dependencies: Zod 4.6.7, semver 7.8.5, `@types/semver` 7.8.0, and Ajv 8.20.0. The implementation session reported 29 passing Vitest tests and successful local install, workspace discovery, typecheck, lint, build, schema generation consistency, CLI help/version, core package import, and frozen-lockfile installation. These results were not independently rerun during the acceptance audit. User-provided screenshots show the successful GitHub Actions run and job; details and evidence boundaries are in [TESTING-LOG.md](../development/TESTING-LOG.md).
 
 Deferred non-blocking issues: add a direct Ajv semantic-boundary test enhancement; decouple core TypeScript tooling from CLI-specific tooling. The Vitest config-loader warning is non-blocking.
 
 ## Git, docs, and source preservation
 
-- The read-only Git readiness audit observed branch `master`, zero commits, and untracked workspace files. A local remote is configured for `github.com`, repository path `inumakidev/DevOrBit.git`; ownership, repository existence, accessibility, visibility, and remote-side state remain Not Verified.
-- No staging, commit, push, fetch, or pull occurred during the Git readiness audit or this documentation reconciliation. The remote was not contacted.
+- User confirms private repository `https://github.com/inumakidev/DevOrBit`, branch `master`, initial commit `6c2f9985031104d36e9a0949a3b3b2b4862b3a2d` (`chore: initialize DevOrbit foundation and core contracts`), and push to `origin/master`.
+- User-provided screenshots show workflow `Workspace validation` run #1, run ID `39215771440`, [run URL](https://github.com/inumakidev/DevOrBit/actions/runs/39215771440), and successful `validate` job ID `117939137329`, [job URL](https://github.com/inumakidev/DevOrBit/actions/runs/39215771440/job/117939137329). The screenshots show 32-second workflow duration, 28-second job duration, and PASS for frozen-lockfile install, lint, typecheck, build, and tests. This agent did not independently fetch or inspect GitHub.
+- The UI showed one annotation warning and one notice; their contents remain uninspected and unresolved, but do not block M1 acceptance.
+- This documentation reconciliation did not run Git commands or contact the remote.
 - The 25 expected Markdown documents and both authoritative DOCX source documents remain present. DOCX files were not modified.
-- The two DOCX sources are proposed for exclusion from the first commit unless separately approved.
-- Documentation records modified for this reconciliation: [CURRENT-STATUS.md](../development/CURRENT-STATUS.md), [DEVELOPMENT-LOG.md](../development/DEVELOPMENT-LOG.md), [TESTING-LOG.md](../development/TESTING-LOG.md), [DECISIONS.md](../development/DECISIONS.md), [NEXT-SESSION.md](../development/NEXT-SESSION.md), [ROADMAP.md](../development/ROADMAP.md), [README.md](../../README.md), [AGENTS.md](../../AGENTS.md), [01-overview.md](../main/01-overview.md), [AGENT-ONBOARDING.md](AGENT-ONBOARDING.md), [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md), and this file.
+- Documentation records modified for this reconciliation: [README.md](../../README.md), [AGENTS.md](../../AGENTS.md), [CHANGELOG.md](../../CHANGELOG.md), [CONTRIBUTING.md](../../CONTRIBUTING.md), [01-overview.md](../main/01-overview.md), [CURRENT-STATUS.md](../development/CURRENT-STATUS.md), [ROADMAP.md](../development/ROADMAP.md), [DEVELOPMENT-LOG.md](../development/DEVELOPMENT-LOG.md), [TESTING-LOG.md](../development/TESTING-LOG.md), [DECISIONS.md](../development/DECISIONS.md), [NEXT-SESSION.md](../development/NEXT-SESSION.md), [HANDOFF.md](HANDOFF.md), [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md), and [AGENT-ONBOARDING.md](AGENT-ONBOARDING.md).
 
 ## Historical evidence and unresolved items
 
-An earlier workspace inspection reported no Git repository; the subsequent M1.1 inspection found `.git`, branch `master`, and zero commits. Preserve both observations as historical rather than rewriting the earlier report. M1.1 found no verified GitHub remote; a later local-only inspection observed an `origin` configuration, without verifying its remote-side state.
+An earlier workspace inspection reported no Git repository; the subsequent M1.1 inspection found `.git`, branch `master`, and zero commits. Preserve both observations as historical rather than rewriting the earlier report. M1.1 found no verified GitHub remote; a later local-only inspection observed an `origin` configuration. The user has since confirmed the repository, push, and workflow success as recorded above.
 
-Security disclosure contact and live agent-adapter capability remain unresolved or Not Verified. The remaining M1 completion gates are to confirm intended GitHub owner/repository name/visibility; separately authorize verification of repository existence and accessibility; review first-commit contents for secrets; obtain explicit authorization before staging, committing, or pushing; observe a successful hosted GitHub Actions run; and record CI evidence plus the final M1 acceptance decision. M1 remains In Progress. M1.3 has not started.
+Security disclosure contact and live agent-adapter capability remain unresolved or Not Verified. M1 — Foundation & Contracts is **Complete / Accepted**; all six requirements are accepted based on implementation reports, prior acceptance audits, and the user-provided CI screenshots. Deferred non-blocking findings remain open: additional Ajv semantic-boundary assertions, core TypeScript tooling coupling to the CLI workspace, the Vitest configuration-loader warning, and the uninspected GitHub Actions annotation warning/notice. M2 — Registry & Resolver is next, planning pending; no M2 implementation has started. See [TESTING-LOG.md](../development/TESTING-LOG.md) and [ROADMAP.md](../development/ROADMAP.md).

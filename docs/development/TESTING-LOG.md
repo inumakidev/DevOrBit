@@ -76,7 +76,7 @@ At the M1.2A checkpoint, M1.2A was implemented and M1 remained incomplete becaus
 
 ## M1.2B implementation results and acceptance audit — 2026-10-19
 
-The implementation-session outcomes below were reported as successful. The subsequent M1.2B acceptance audit was read-only and did not rerun commands, reinstall dependencies, or regenerate the schema. Do not treat reported results as independent acceptance-audit executions.
+The implementation-session outcomes below were reported as successful. The subsequent M1.2B acceptance audit was read-only and did not rerun commands, reinstall dependencies, or regenerate the schema. Do not treat reported results as independent acceptance-audit executions. The hosted Actions row reflects evidence available at that earlier audit checkpoint; later user confirmation is recorded in the final closure section.
 
 | Check | Observed result | Outcome |
 |---|---|---|
@@ -90,12 +90,52 @@ The implementation-session outcomes below were reported as successful. The subse
 | CLI smoke checks | CLI `--help` and `--version` checks succeeded; the CLI version is `0.0.0`. | Reported PASS |
 | Core package import | `@devorbit/core` import smoke check succeeded. | Reported PASS |
 | Frozen lockfile | `pnpm install --frozen-lockfile` completed successfully. | Reported PASS |
-| Hosted GitHub Actions | No hosted workflow run has been observed. | Not Verified |
+| Hosted GitHub Actions at the M1.2B audit checkpoint | No hosted workflow run had yet been observed. | Not Verified at that historical checkpoint |
 | M1.2B acceptance audit command reruns | Audit was read-only; the command results above were not rerun. | Not Run |
 | JSON Schema semantic-boundary coverage | Audit identified a deferred opportunity for direct Ajv examples showing custom semantic constraints (including duplicate IDs and kind/ID prefix agreement) that JSON Schema does not fully express. | Deferred; non-blocking |
 | Vitest config-loader warning | A warning was observed/reported, without a failed test outcome. | Non-blocking |
 
-M1.2B was accepted with non-blocking issues. The 29 tests are contract tests; no broader end-to-end/product application test result is claimed. M1 remains in progress pending GitHub verification, explicit authorization for Git operations, an actual successful hosted Actions run, and the final M1 acceptance decision.
+At the M1.2B acceptance-audit checkpoint, M1.2B was accepted with non-blocking issues. The 29 tests are contract tests; no broader end-to-end/product application test result is claimed. At that time, M1 remained in progress pending GitHub verification, explicit authorization for Git operations, an actual successful hosted Actions run, and the final M1 acceptance decision. The later user-confirmed repository and workflow status is recorded in the M1 final closure review below.
+
+## M1 final closure review — 2026-10-19
+
+The repository, push, visibility, and hosted workflow results in this section are **user-confirmed**. No GitHub remote was contacted and no Git operation was performed during this documentation-only review. The prior M1.2B implementation command results remain implementation-session reports; they were not independently rerun here.
+
+Documentation validation for this task: relative Markdown links in the 14 authorized files were checked; no broken targets were found. No package, build, or application test command was run.
+
+| # | M1 requirement | Outcome | Supporting evidence and limitations |
+|---|---|---|---|
+| 1 | Development environment and GitHub repository readiness | **PASS** | Tool versions are recorded in `CURRENT-STATUS.md` and were previously inspected/reported. User confirms private `inumakidev/DevOrBit`, branch `master`, initial commit and push to `origin/master`. Repository state and privacy were not independently inspected during this review. |
+| 2 | Pinned toolchain and dependency versions | **PASS** | Exact versions are recorded: Node.js 22.14.0, pnpm 10.16.0, TypeScript 5.9.3, Vitest 4.1.5, Biome 2.5.15, Commander.js 14.0.3, Zod 4.6.7, semver 7.8.5, `@types/semver` 7.8.0, and Ajv 8.20.0. Prior implementation/acceptance records report the lockfile and installed versions; they were not rechecked in this closure review. |
+| 3 | Monorepo and GitHub Actions baseline | **PASS** | The workspace/CI baseline was implemented and previously inspected/reported. User-provided screenshots show successful `Workspace validation` run #1 (ID `39215771440`) and successful `validate` job (ID `117939137329`) on `master`. The screenshots, not an independently fetched GitHub record, are the hosted evidence. |
+| 4 | Core contracts, canonical schema, validation, and errors | **PASS** | M1.2B was accepted with non-blocking issues. Its implementation report and read-only acceptance audit document the core API, canonical Zod schema, generated Draft 2020-12 JSON Schema, typed errors, and contract validation. Deferred semantic-boundary coverage remains documented. |
+| 5 | Actual manifest contract tests | **PASS** | Prior M1.2B implementation-session report: 29 Vitest tests passed. This result was not rerun during the acceptance audit or this closure review; no broader end-to-end/product application test result is claimed. |
+| 6 | Reproducible install/build/typecheck/lint/test evidence and updated handoff | **PASS** | Prior implementation-session reports record successful local install, frozen-lockfile install, build, typecheck, lint, schema generation, CLI smoke checks, core import, and 29 tests. User-provided GitHub screenshots identify the successful hosted run and job and show install, lint, typecheck, build, and tests passing. Status and handoff records are reconciled. Screenshots were not independently retrieved from GitHub; annotation details remain uninspected. |
+
+### M1 closure decision
+
+**Final decision: ACCEPT M1 — Foundation & Contracts.** All six requirements are accepted based on the implementation reports, prior acceptance audits, and user-provided GitHub Actions screenshots. The evidence source and limits are explicit; no additional hosted CI details are inferred. M2 — Registry & Resolver is next, planning pending; no M2 implementation has started.
+
+### GitHub Actions run evidence
+
+- Repository: `inumakidev/DevOrBit`; Private visibility is user-confirmed.
+- Branch: `master`.
+- Initial commit: `6c2f9985031104d36e9a0949a3b3b2b4862b3a2d`, `chore: initialize DevOrbit foundation and core contracts`; successful push to `origin/master` is user-confirmed.
+- Workflow: `Workspace validation`, run **#1**, run ID `39215771440`, [run URL](https://github.com/inumakidev/DevOrBit/actions/runs/39215771440).
+- Job: `validate`, job ID `117939137329`, [job URL](https://github.com/inumakidev/DevOrBit/actions/runs/39215771440/job/117939137329).
+- User-provided screenshots show overall workflow **SUCCESS**, job **SUCCESS**, duration **32 seconds** overall and **28 seconds** for the job.
+- The screenshots show `pnpm install --frozen-lockfile`, `pnpm lint`, `pnpm typecheck`, `pnpm build`, and `pnpm test` as **PASS**.
+- Evidence is from screenshots supplied by the user, not an independently fetched GitHub record. No further jobs, checks, or results are asserted.
+- The GitHub UI also displayed **one warning and one notice** under Annotations. Their contents have not been reviewed; they remain **uninspected and unresolved**, but are not blockers to M1 acceptance.
+
+The implementation-session report separately records 29 passing Vitest contract tests and successful local install, typecheck, lint, build, schema generation consistency, CLI smoke checks, core package import, and frozen-lockfile installation. These local results were not independently rerun during this final documentation closure.
+
+### Deferred, non-blocking findings
+
+- Add explicit Ajv tests that demonstrate semantic-boundary limitations, especially duplicate-ID and kind/ID-prefix rules.
+- Decouple core TypeScript tooling from CLI workspace coupling.
+- The Vitest configuration-loader warning was non-failing and remains a non-blocking issue.
+- The hosted GitHub Actions annotation warning and notice have not been inspected and remain unresolved; they are not blockers to M1 acceptance.
 
 ## Recording template
 

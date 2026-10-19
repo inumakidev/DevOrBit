@@ -14,9 +14,9 @@
 | M1.1A / M1.1B — Reconciliation and preflight | Completed | Historical inspection and authorization records preserved. |
 | M1.2A — Workspace Foundation | Accepted | Workspace foundation and local validation were accepted. |
 | M1.2B — Core Contracts | Accepted with non-blocking issues | 14 new files and four configuration files were modified; implementation-session checks were reported successful. |
-| M1 — Repository Foundation & Contracts | In progress; not complete | M1.2A and M1.2B are accepted; GitHub verification and final M1 evidence remain. |
-| M1.3 | Not started | No later milestone work is authorized or started. |
-| Phase 4 — Controlled Implementation | In progress | M1.2A and M1.2B only; no M1.3 work started. |
+| M1 — Foundation & Contracts | Complete / Accepted | All six requirements and Definition of Done accepted; local results are implementation-session reports and hosted CI evidence is from user-provided screenshots. |
+| M2 — Registry & Resolver | Planning pending | Scope is approved in the roadmap/blueprint; planning handoff follows below. No M2 implementation has started. |
+| Phase 4 — Controlled Implementation | In progress | M1 is complete; M2 planning is pending and no M2 implementation has started. |
 | Core contract tests | Reported PASS (29) | Reported from the M1.2B implementation session; not rerun during the acceptance audit. |
 | Broader application/integration tests | Not run | No broader end-to-end application test result is claimed. |
 | Phase 5 — Real Project Validation | Not started | Requires later safeguards and authorization. |
@@ -73,15 +73,15 @@ Four existing configuration files were modified: root `package.json`, `biome.jso
 
 ## Validation and evidence
 
-The M1.2A implementation session reported PASS for dependency installation, workspace package discovery, Biome lint/format checks, TypeScript typecheck, CLI build, CLI `--help`/`--version` smoke checks, and frozen-lockfile consistency. The M1.2B implementation session reported PASS for `pnpm install`, workspace discovery, `pnpm typecheck`, `pnpm lint`, `pnpm build`, `pnpm test` (29 tests), schema generation consistency, CLI help/version smoke checks, core package import, and `pnpm install --frozen-lockfile`. These are prior-session reported results; they were not independently rerun during the acceptance audit or this documentation reconciliation. No hosted GitHub Actions result is available yet.
+The M1.2A implementation session reported PASS for dependency installation, workspace package discovery, Biome lint/format checks, TypeScript typecheck, CLI build, CLI `--help`/`--version` smoke checks, and frozen-lockfile consistency. The M1.2B implementation session reported PASS for `pnpm install`, workspace discovery, `pnpm typecheck`, `pnpm lint`, `pnpm build`, `pnpm test` (29 tests), schema generation consistency, CLI help/version smoke checks, core package import, and `pnpm install --frozen-lockfile`. These are prior-session reported results; they were not independently rerun during the acceptance audit or this documentation reconciliation.
 
-The earlier M1.2A acceptance independently inspected its 11 authorized paths, root scripts, workspace declarations, lockfile, installed versions, existing built CLI output, and documentation/source presence. It did not rerun install or build. The later M1.2B acceptance audit was read-only; its findings and the M1.2B command results are distinguished in [TESTING-LOG.md](TESTING-LOG.md).
+User-provided GitHub screenshots show the `Workspace validation` workflow run #1 (run ID `39215771440`) for `master`, with `validate` job (job ID `117939137329`) successful. The screenshot evidence reports 32 seconds overall, 28 seconds for the job, and PASS for frozen-lockfile install, lint, typecheck, build, and tests. URLs and evidence qualifications are recorded in [TESTING-LOG.md](TESTING-LOG.md). One annotation warning and one notice are displayed; their contents have not been reviewed and remain unresolved/uninspected.
 
 See [TESTING-LOG.md](TESTING-LOG.md) for check details and evidence boundaries.
 
 ## Git and documentation preservation
 
-The read-only Git readiness audit observed branch `master`, zero commits, and untracked workspace files. A remote is configured locally (`github.com`, repository path `inumakidev/DevOrBit.git`), but ownership, repository existence, accessibility, visibility, and remote-side state are **Not Verified**. No staging, commit, push, fetch, or pull was performed during that audit or this documentation reconciliation. The two authoritative DOCX source documents remain present and unchanged; they are proposed for exclusion from the first commit unless separately approved.
+User-confirmed GitHub state: private repository `https://github.com/inumakidev/DevOrBit`, branch `master`, initial commit `6c2f9985031104d36e9a0949a3b3b2b4862b3a2d` (`chore: initialize DevOrbit foundation and core contracts`), pushed to `origin/master`. The workflow details above come from user-provided screenshots, not an independent GitHub inspection. This documentation task did not run Git commands or contact GitHub. The two authoritative DOCX source documents remain present and unchanged.
 
 The expected 25 Markdown documents and the two authoritative DOCX sources remain present. The DOCX sources were not modified.
 
@@ -89,10 +89,12 @@ The expected 25 Markdown documents and the two authoritative DOCX sources remain
 
 - M1.2B was accepted with non-blocking issues. Deferred follow-up includes a direct Ajv semantic-boundary test enhancement and decoupling core TypeScript tooling from CLI-specific tooling.
 - The M1.2B Vitest config-loader warning was non-blocking; it did not change the reported test outcome.
-- Security disclosure contact, GitHub remote ownership/access/privacy, and live agent-adapter capability remain unresolved or Not Verified.
+- Security disclosure contact and live agent-adapter capability remain unresolved or Not Verified. GitHub Actions annotation warning and notice details remain uninspected and unresolved; they are not blockers to M1 acceptance.
 
 ## Current task and next milestone
 
 **Current task:** M1 documentation reconciliation — completed.
 
-**Next task:** Confirm the intended GitHub owner, repository name, and visibility. Do not contact the remote or perform Git mutations until separately authorized. Then complete the remaining M1 acceptance gates: verify repository existence/accessibility with authorization; review candidate first-commit contents for secrets; obtain explicit authorization before staging, committing, or pushing; observe a successful hosted GitHub Actions run; and record CI evidence plus the final M1 acceptance decision. M1 remains in progress; M1.3 has not started.
+**M1 final acceptance review:** All six requirements are **Accepted**. The record distinguishes the implementation-session reports, acceptance audits, user confirmations, and user-provided CI screenshots. M1 is **Complete / Accepted**. Deferred issues remain non-blocking and are not marked resolved.
+
+**Next milestone:** M2 — Registry & Resolver, planning pending. Its approved objectives and Definition of Done are summarized in [ROADMAP.md](ROADMAP.md) and detailed in the [implementation and continuity blueprint](../../DevOrbit_Development_and_Continuity.docx). No M2 implementation has started; obtain explicit authorization before implementing it.

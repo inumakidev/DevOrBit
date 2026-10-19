@@ -1,6 +1,6 @@
 # Contributing to DevOrbit
 
-Thank you for helping improve DevOrbit. This repository currently contains the documentation foundation for an approved design; it does not establish that toolkit implementation has begun.
+Thank you for helping improve DevOrbit. The documentation foundation and M1 workspace/core contracts are present. M1.2A is accepted, M1.2B is accepted with non-blocking issues, and M1 Foundation & Contracts is Complete / Accepted. M2 — Registry & Resolver is next, planning pending; implementation has not started.
 
 ## Before contributing
 
@@ -13,7 +13,7 @@ Do not change approved architecture or scope without explicit user approval and 
 
 ## Current contribution boundary
 
-Documentation Foundation work is limited to the approved Markdown documentation set. Phase 4 implementation is not started. Until separately authorized, do not add application source code, install dependencies, initialize a framework, provision a database, deploy, or push to GitHub.
+Do not begin M2 implementation or later milestone work without explicit authorization. Do not modify application source, install dependencies, initialize a framework, provision a database, deploy, or perform Git/GitHub operations unless explicitly authorized. The user handles GitHub operations manually. Preserve the distinction between implementation-session reports and user-provided hosted-CI screenshots; do not invent run details or job results.
 
 ## Documentation contributions
 
