@@ -15,10 +15,10 @@
 | M1.2A — Workspace Foundation | Accepted | Workspace foundation and local validation were accepted. |
 | M1.2B — Core Contracts | Accepted with non-blocking issues | 14 new files and four configuration files were modified; implementation-session checks were reported successful. |
 | M1 — Foundation & Contracts | Complete / Accepted | All six requirements and Definition of Done accepted; local results are implementation-session reports and hosted CI evidence is from user-provided screenshots. |
-| M2.1 — Registry & Resolver architecture | Approved; documentation closure complete | Canonical baseline: [M2.1 architecture](../main/11-registry-and-resolver-architecture.md). No M2 implementation or tests. |
-| M2.2 — Registry, Integrity & Provenance | Not authorized | Requires separate implementation authorization and resolution of listed exact technical prerequisites. |
-| M2.3–M2.5 | Not started | Resolver, plans/diagnostics, and acceptance testing have not begun. |
-| Phase 4 — Controlled Implementation | Not started | M1 is complete; M2.1 documentation closure is complete, but implementation has not started. |
+| M2.1 — Registry & Resolver architecture | Accepted; documentation closure complete | Canonical baseline: [registry and resolver architecture](../main/11-registry-and-resolver-architecture.md). No M2 implementation or tests. |
+| M2.2 — Registry, Integrity & Provenance | Design freeze approved; specification synchronization complete; Clarification Amendments v1.0–v1.3 (ADR-021–ADR-024) approved and documented; documentation pending final acceptance audit; implementation not authorized | Seven exact-parameter gaps synchronized. |
+| M2.3–M2.5 | Not started | M2.3 resolver and subsequent checkpoints have not begun. |
+| Phase 4 — Controlled Implementation | Not started | M1 is complete; M2.2 documentation is synchronized and pending final acceptance; implementation has not started. |
 | Core contract tests | Reported PASS (29) | Reported from the M1.2B implementation session; not rerun during the acceptance audit. |
 | Broader application/integration tests | Not run | No broader end-to-end application test result is claimed. |
 | Phase 5 — Real Project Validation | Not started | Requires later safeguards and authorization. |
@@ -95,10 +95,10 @@ The expected 25 Markdown documents and the two authoritative DOCX sources remain
 
 ## Current task and next milestone
 
-**Current task:** M2.1 documentation-only closure — complete.
+**Current task:** Final M2.2 documentation acceptance audit — pending user review; seven exact-parameter gaps and Clarification Amendments v1.0–v1.3 (ADR-021–ADR-024) are documented in the canonical specification.
 
 **M1 final acceptance review:** All six requirements are **Accepted**. The record distinguishes the implementation-session reports, acceptance audits, user confirmations, and user-provided CI screenshots. M1 is **Complete / Accepted**. Deferred issues remain non-blocking and are not marked resolved.
 
-**Current checkpoint:** M2.1 — Registry & Resolver architecture is approved; documentation closure is complete. M2.2 is not authorized, and M2.3–M2.5 have not started. See [ROADMAP.md](ROADMAP.md) and the [canonical M2.1 architecture](../main/11-registry-and-resolver-architecture.md). No M2 implementation has started.
+**Current checkpoint:** M2.2 design freeze approved; seven exact-parameter gaps synchronized; Clarification Amendments v1.0–v1.3 (ADR-021–ADR-024) approved and documented; final documentation acceptance audit pending. M2.2 implementation is **NOT AUTHORIZED**, M2.3 is **NOT STARTED**, and M2.2 tests are **NOT EXECUTED**. See [ROADMAP.md](ROADMAP.md) and the [canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md).
 
-**M2.1 checkpoint:** Architecture is approved by the user. Documentation closure is complete following read-only documentation validation. M2.2 is not authorized; M2.3–M2.5 are not started. M2 tests are **Not Executed**. The canonical specification identifies exact details requiring confirmation before M2.2.
+**M2.1 checkpoint:** Architecture is approved by the user and documentation closure is complete. M2.2 tests are **NOT EXECUTED**. No M2.2 implementation is claimed. Windows security properties have not been verified.

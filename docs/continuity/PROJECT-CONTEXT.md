@@ -24,15 +24,20 @@ The project is a versioned, modular AI development toolkit design for reusable s
 - Documentation Foundation: Approved.
 - M1.1 Environment Inspection: Completed.
 - M1.1A/M1.1B reconciliation and preflight: Completed.
-- Phase 4 implementation: Not Started; M2.1 documentation closure is complete, but no M2 implementation has started.
+- Phase 4 implementation: Not Started; no M2 implementation has started.
 - M1.2A Workspace Foundation: Accepted.
 - M1.2B Core Contracts: Accepted with non-blocking issues.
 - M1 — Foundation & Contracts: Complete / Accepted.
 - M1.2B contract tests: 29 reported passing; not independently rerun during the acceptance audit.
 - GitHub initial commit and push: User-confirmed.
 - Hosted GitHub Actions: Successful per user-provided screenshots; run #1 / ID `39215771440`, `validate` job ID `117939137329`.
-- M2.1 — Registry & Resolver architecture: Approved; documentation closure complete.
-- M2.2: Not Authorized. M2.3–M2.5: Not Started. M2 tests: Not Executed.
+- M2.1 — Registry & Resolver architecture and documentation: Accepted / Complete.
+- M2.2 design freeze: Approved; seven exact-parameter groups synchronized; Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) approved and documented; documentation pending final user acceptance; implementation NOT AUTHORIZED.
+- M2.3: Not Started. M2.2 tests: NOT EXECUTED.
+
+**Approved design versus implementation status:** M2.2's nine specification groups are approved at design level and documented in the [canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md). The seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are synchronized and documented in [DECISIONS.md](../development/DECISIONS.md). The canonical comparator preserves ordinal string comparison for its first five logical fields; its sixth `message` field maps to `RegistryDiagnostic.detail` and uses the RFC 8785 JCS byte comparison specified by ADR-024. Documentation remains pending final user acceptance. This is not implementation or verification evidence. M2.2 implementation is NOT AUTHORIZED; M2.3 is NOT STARTED; M2.2 tests are NOT EXECUTED; Windows/Git/OS security properties remain unverified.
+
+**Historical audit context:** the earlier final audit listed these three clarification questions as unresolved at that time. The later approved ADR-021 resolves them; the historical finding is retained in [HANDOFF.md](HANDOFF.md) and is not a current blocker.
 
 M1.2A established and accepted the workspace foundation and minimal `@devorbit/cli` entry point at version `0.0.0`. M1.2B Core Contracts was accepted with non-blocking issues. Its implementation session reported 29 passing Vitest contract tests and successful local install, workspace discovery, typecheck, lint, build, schema generation, CLI smoke checks, core import, and frozen-lockfile checks; the read-only acceptance audit did not rerun them. User-provided screenshots identify the initial commit/push to the private GitHub repository and show successful hosted workflow `Workspace validation` run #1 and `validate` job. All six M1 requirements are accepted; M1 is Complete / Accepted. The GitHub UI annotation warning and notice remain uninspected and unresolved, and are not M1 blockers. This does not establish broader end-to-end/product test coverage or implementation of either engine, an installer, skills, or adapters.
 
@@ -40,7 +45,7 @@ User-confirmed GitHub record: private repository `https://github.com/inumakidev/
 
 ## Safety boundaries
 
-Do not change approved decisions without explicit approval. M1 is complete; M2.1 architecture is approved and documentation closure is complete. M2.2 is not authorized. Do not begin implementation without separate explicit authorization. See the [canonical M2.1 architecture](../main/11-registry-and-resolver-architecture.md). Do not initialize frameworks, provision databases, deploy, contact GitHub, stage, commit, push, fetch, pull, or overwrite existing files without required authorization. Keep secrets and personal data out of logs and evidence.
+Do not change approved decisions without explicit approval. M1 is Complete / Accepted; M2.1 documentation is accepted; M2.2 design is approved, its seven exact-parameter groups are synchronized, and Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are approved and documented; final user acceptance is pending. M2.2 implementation is NOT AUTHORIZED. M2.3 is NOT STARTED and M2.2 tests are NOT EXECUTED. Do not begin implementation without separate explicit authorization. See the [canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md) and [decision record](../development/DECISIONS.md). Git/GitHub authority and all Git/GitHub operations remain exclusively user-managed. Do not initialize frameworks, provision databases, deploy, contact GitHub, stage, commit, push, fetch, pull, or overwrite existing files without required authorization. Keep secrets and personal data out of logs and evidence.
 
 ## Source precedence
 

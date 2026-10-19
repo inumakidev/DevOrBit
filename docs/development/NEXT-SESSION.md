@@ -7,16 +7,16 @@
 - M1.2A — Workspace Foundation: **Accepted**.
 - M1.2B — Core Contracts: **Accepted with non-blocking issues**.
 - M1 — Foundation & Contracts: **Complete / Accepted**.
-- M2.1 — Registry & Resolver architecture: **Approved**; documentation closure **Complete**.
-- M2.2 — Registry, Integrity & Provenance: **Not Authorized**.
-- M2.3–M2.5: **Not Started**.
-- M2 tests: **Not Executed**.
+- M2.1 — Registry & Resolver architecture and documentation: **Accepted / Complete**.
+- M2.2 design freeze: **Approved**; seven exact-parameter gaps synchronized; Clarification Amendments v1.0–v1.3 (ADR-021–ADR-024) approved and documented; final documentation acceptance audit pending; implementation **NOT AUTHORIZED**.
+- M2.3: **Not Started**.
+- M2.2 tests: **NOT EXECUTED**.
 - Contract tests: **29 reported passing** in the M1.2B implementation session; not rerun during the read-only acceptance audit.
 - Hosted GitHub Actions: **Successful**, supported by user-provided screenshots; run/job identifiers recorded below.
 - GitHub repository: **Private per user confirmation**, `inumakidev/DevOrBit`, branch `master`; initial commit and push confirmed.
-- Completed this session: M2.1 documentation-only closure and read-only validation.
-- Current task: Review/confirm the exact M2.1 implementation prerequisites recorded in the canonical specification.
-- Next gate: resolve exact implementation prerequisites in the [canonical M2.1 specification](../main/11-registry-and-resolver-architecture.md), then obtain separate authorization before M2.2. Do not implement M2.2 under this checkpoint.
+- Completed this session: M2.2 Clarification Amendment v1.3 synchronized into the canonical specification and decision record; final documentation acceptance remains pending.
+- Current task: Final M2.2 documentation acceptance audit and user review.
+- Next gate: Do not mark documentation closure complete until user review. After acceptance, M2.2A implementation planning may proceed only with separate authorization; implementation itself remains unauthorized.
 
 Read the required continuity files in order as listed in [AGENTS.md](../../AGENTS.md), then inspect the actual repository before any future implementation.
 
@@ -30,9 +30,15 @@ The user-provided GitHub screenshots show the successful `Workspace validation` 
 
 The user approved the M2.1 architecture: internal registry and resolver libraries only, no CLI integration, and preservation of M1 contracts. Detached attestations, single-administrator authenticated policy updates, 720-hour validity, compatibility semantics, optional trust policy, stable-only default, and standard local protected-state limitations are recorded in the [canonical specification](../main/11-registry-and-resolver-architecture.md).
 
-**Current status:** M2.1 architecture Approved; documentation closure Complete. M2.2 Not Authorized. M2.3–M2.5 Not Started. M2 tests Not Executed.
+**Historical status:** M2.1 architecture Approved; documentation closure Complete. This historical checkpoint is superseded by the current M2.2 freeze checkpoint below.
 
-Before M2.2, confirm the exact directory-record hash framing/empty-directory rule, attestation lookup encoding, initial resource limits, diagnostic mapping, supported Git platform assumptions, and protected-state adapter. Standard local protected state has a documented privileged-restoration limitation; hardware-backed storage is not mandatory.
+The M2.2 freeze resolves file-only hashing with empty directories excluded, attestation lookup framing, RFC 8785 canonicalization, policy rotation and protected-state rules, commit parser compatibility, and the approved design-level diagnostics and limits. The complete full-chain retrieval adapter is not frozen. Windows/Git/OS security remains unverified implementation-time work.
+
+## Current M2.2 documentation checkpoint
+
+The M2.2 design freeze and all nine specification groups are approved. The seven exact-parameter gaps and approved Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are documented in [the canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md). ADR-024 applies JCS canonicalization to the diagnostic `detail` comparison value and supersedes ADR-023 only for its detail key-ordering and serialization rule. Final documentation acceptance audit is pending; implementation is **NOT AUTHORIZED**.
+
+After documentation acceptance, M2.2A implementation planning requires a separate authorization. No M2.2 implementation, tests, dependency changes, or Git/GitHub operations are authorized by this checkpoint.
 
 ## Historical M2 planning handoff — Registry & Resolver
 

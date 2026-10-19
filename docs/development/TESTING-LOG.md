@@ -153,12 +153,13 @@ Never convert a planned test into a pass or invent benchmark results. Mandatory 
 
 ## M2 — Registry & Resolver acceptance criteria
 
-The M2 acceptance matrix is an approved design requirement, not a report of executed tests. See the [canonical M2.1 specification](../main/11-registry-and-resolver-architecture.md) for the mandatory registry, trust, integrity, resolver, determinism, Windows-security, offline, and read-only cases.
+The M2 acceptance matrix is an approved design requirement, not a report of executed tests. M2.2 design is approved, but no implementation or tests have started. See the [canonical registry and resolver specification](../main/11-registry-and-resolver-architecture.md) for the exact frozen protocol, mandatory acceptance cases, limits, and implementation-time security gates.
 
 | Check group | Expected evidence | Observed result | Outcome |
 |---|---|---|---|
-| M2 registry, integrity, provenance, policy, snapshot, resolver, and diagnostics matrix | Every approved mandatory case has deterministic, explainable evidence. | M2 implementation has not started; no M2 tests were executed. | **NOT EXECUTED** |
-| M2 hash golden vectors | Independently generated and checked values after exact directory framing is confirmed. | No hash values generated or claimed. | **NOT EXECUTED** |
-| M2 Windows Git/path/security checks | Supported local Git adapter and Windows filesystem tests. | No M2 adapter or tests exist as an accepted implementation claim. | **NOT EXECUTED** |
+| M2.2 registry, file-only integrity, attestation, trust-policy, protected-state, Git-object, binding, snapshot, diagnostics, and resource-boundary matrix | Exact positive/negative evidence for every approved requirement; boundary behavior is inclusive and overflow fails closed. | M2.2 implementation has not started; no M2.2 tests were executed. | **NOT EXECUTED** |
+| M2.2 independent fixed-byte vectors | Independently generated and verified raw-byte/hex fixtures with manual byte-level review; no fabricated outputs. | No vectors generated or claimed. | **NOT EXECUTED** |
+| M2.2 Windows/Git/OS security validation | Evidence for ACLs, protected keys, reparse points, executable substitution, config isolation, offline/read-only behavior, process-tree termination, races, and supported baseline. | No M2.2 adapter or Windows security result is claimed. | **NOT EXECUTED** |
+| M2.3 resolver and plan matrix | Deterministic dependency/compatibility solving, rollback semantics, diagnostics, and bounded failure behavior. | M2.3 has not started. | **NOT EXECUTED** |
 
-The matrix is not a passing test result. Do not infer M2 verification from M1 tests or hosted M1 CI.
+The matrix is not a passing test result. Every M2.2 test result remains **NOT EXECUTED**. Do not infer M2 verification from M1 tests or hosted M1 CI. Windows security testing has not been completed.

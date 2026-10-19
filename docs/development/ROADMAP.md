@@ -13,8 +13,8 @@
 | M1.2A — Workspace Foundation | Accepted | Workspace foundation and local validation were accepted. |
 | M1.2B — Core Contracts | Accepted with non-blocking issues | 14 files added and four configuration files modified; 29 contract tests and local validation were reported successful. |
 | M1 — Foundation & Contracts | Complete / Accepted | All six M1 requirements and Definition of Done accepted; details and evidence provenance are recorded in `TESTING-LOG.md`. |
-| M2 — Registry & Resolver | M2.1 architecture approved; documentation closure complete | M2.2 not authorized; M2.3–M2.5 not started; no M2 implementation or tests. |
-| Phase 4 — Controlled Implementation | Not started | M1 is complete; M2.1 documentation closure is complete, but implementation has not started. M2.2 is not authorized. |
+| M2 — Registry & Resolver | M2.1 accepted; M2.2 design freeze approved; seven exact-parameter groups synchronized; ADR-021 through ADR-024 approved and documented; M2.2 documentation pending final user acceptance | M2.2 implementation NOT AUTHORIZED; M2.3 NOT STARTED; M2.2 tests NOT EXECUTED. |
+| Phase 4 — Controlled Implementation | Not started | M1 is complete. M2.2 design approval and documentation synchronization do not authorize implementation. |
 | Phase 5 — Real Project Validation | Not started | Disposable sample repositories first; personal project use only after safeguards. |
 
 ## Phase 4 milestones
@@ -29,13 +29,13 @@ M1 is **Complete / Accepted**. Deferred non-blocking follow-up includes more exp
 
 ### M2 — Registry & Resolver
 
-**Status:** M2.1 architecture **Approved**; documentation closure **Complete**. M2.2 **Not Authorized**. M2.3–M2.5 **Not Started**. No M2 implementation is claimed; M2 tests have **Not been executed**.
+**Status:** M1 is **Complete / Accepted**. M2.1 architecture and documentation are **Accepted**. M2.2 design freeze is **Approved**; the seven exact-parameter groups are synchronized; ADR-021 through ADR-024 are approved and documented; final user acceptance of M2.2 documentation is **Pending**. M2.2 implementation is **NOT AUTHORIZED**. M2.2A implementation planning/implementation requires a separate authorization gate after documentation acceptance. M2.3 is **NOT STARTED**. No M2 implementation is claimed; M2.2 tests are **NOT EXECUTED**.
 
 **Approved objective and deliverables:** implement local canonical content indexing and integrity/provenance validation; expand required and optional dependencies with deterministic ordering; reject dependency cycles, incompatible versions, missing required assets, unsupported mandatory capabilities, conflicts, and trust failures; produce explainable plans; and add negative tests for conflict and trust failures. This scope derives from the approved architecture and implementation/continuity blueprint; it is not permission to begin implementation.
 
-**Dependency and boundary:** M1 Foundation & Contracts is Complete / Accepted. M2 consumes existing M1 contracts without changing their public API, schema semantics, or error codes. Approved M2.1 boundary is internal registry and resolver libraries only; CLI integration is deferred. See the [canonical M2.1 architecture](../main/11-registry-and-resolver-architecture.md). Do not infer implementation or expand scope.
+**Dependency and boundary:** M1 Foundation & Contracts is Complete / Accepted. M2 consumes existing M1 contracts without changing their public API, schema semantics, or error codes. Approved boundary is internal registry and resolver libraries only; CLI integration is deferred. M2.2's design is frozen, but implementation requires separate authorization. See the [canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md). Do not infer implementation or expand scope.
 
-**Definition of Done:** deterministic plans and verified failure behavior for all mandatory conflict cases. The detailed proposed matrix is in the canonical specification. It is approved acceptance design, not evidence of tests passing.
+**Definition of Done:** deterministic plans and verified failure behavior for all mandatory conflict cases. The detailed matrix is in the canonical specification. It is approved acceptance design, not evidence of tests passing. The seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are documented in the canonical specification. Final user acceptance remains pending. The earlier audit's clarification items were resolved by ADR-021; ADR-022 further specifies the diagnostic property mapping and attestation aggregate-byte scope, while ADR-023/ADR-024 clarify the `detail` comparison representation, without changing M1 contracts or the approved comparator.
 
 See the approved [master documentation (architecture and detailed design)](../../DevOrbit_Master_Documentation.docx), [Architecture](../main/02-architecture.md), [Features and scope](../main/03-features-and-scope.md), [Evaluation and releases](../main/09-evaluation-and-releases.md), and the [implementation and continuity blueprint](../../DevOrbit_Development_and_Continuity.docx).
 
