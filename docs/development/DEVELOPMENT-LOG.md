@@ -88,3 +88,12 @@ This log records actual work, not planned implementation. The statement that no 
 - **Acceptance matrix:** All six M1 requirements are accepted in [TESTING-LOG.md](TESTING-LOG.md). Local implementation reports and hosted screenshot evidence are distinguished.
 - **Deferred non-blocking issues:** Additional Ajv semantic-boundary assertions; core TypeScript tooling coupling to the CLI workspace; non-failing Vitest configuration-loader warning; uninspected GitHub Actions annotation warning and notice.
 - **M2 planning handoff:** Approved scope and Definition of Done are recorded in [ROADMAP.md](ROADMAP.md); refer to [architecture](../main/02-architecture.md), [features and scope](../main/03-features-and-scope.md), [evaluation and releases](../main/09-evaluation-and-releases.md), and the authoritative [implementation and continuity blueprint](../../DevOrbit_Development_and_Continuity.docx). Planning only; no M2 implementation has started.
+
+## 2026-10-19 — M2.1 architecture approval and documentation closure
+
+- **Scope:** User-approved M2.1 documentation-only closure. No implementation, package changes, test execution, or Git/GitHub operation.
+- **Architecture status:** M2.1 architecture approved by the user. M2.2 is not authorized; M2.3–M2.5 are not started. No M2 implementation is claimed.
+- **Canonical specification:** Created `docs/main/11-registry-and-resolver-architecture.md` as the single detailed Markdown reference, preserving M1 contracts and explicitly flagging unresolved exact technical details.
+- **Files updated:** `docs/main/02-architecture.md`, `docs/main/09-evaluation-and-releases.md`, `docs/development/DECISIONS.md`, `ROADMAP.md`, `CURRENT-STATUS.md`, `DEVELOPMENT-LOG.md`, `TESTING-LOG.md`, `NEXT-SESSION.md`, `docs/continuity/HANDOFF.md`, `PROJECT-CONTEXT.md`, `AGENT-ONBOARDING.md`, `AGENTS.md`, and `README.md`.
+- **Validation:** All 14 authorized Markdown files exist; relative Markdown paths and heading anchors resolve. Current status wording is consistent: M1 complete/accepted; M2.1 architecture approved and documentation closure complete; Phase 4 implementation not started; M2.2 not authorized; M2.3–M2.5 not started; M2 tests not executed. No M2 tests were run.
+- **Next gate:** User review/confirmation of unresolved directory hash framing, attestation lookup encoding, policy JSON canonicalization, resource limits, diagnostic mapping, Git support, and protected-state adapter. M2.2 requires separate authorization.

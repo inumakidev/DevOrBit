@@ -150,3 +150,15 @@ For each later check, record:
 - Follow-up or issue ID.
 
 Never convert a planned test into a pass or invent benchmark results. Mandatory Not Verified checks block the relevant milestone/release gate.
+
+## M2 — Registry & Resolver acceptance criteria
+
+The M2 acceptance matrix is an approved design requirement, not a report of executed tests. See the [canonical M2.1 specification](../main/11-registry-and-resolver-architecture.md) for the mandatory registry, trust, integrity, resolver, determinism, Windows-security, offline, and read-only cases.
+
+| Check group | Expected evidence | Observed result | Outcome |
+|---|---|---|---|
+| M2 registry, integrity, provenance, policy, snapshot, resolver, and diagnostics matrix | Every approved mandatory case has deterministic, explainable evidence. | M2 implementation has not started; no M2 tests were executed. | **NOT EXECUTED** |
+| M2 hash golden vectors | Independently generated and checked values after exact directory framing is confirmed. | No hash values generated or claimed. | **NOT EXECUTED** |
+| M2 Windows Git/path/security checks | Supported local Git adapter and Windows filesystem tests. | No M2 adapter or tests exist as an accepted implementation claim. | **NOT EXECUTED** |
+
+The matrix is not a passing test result. Do not infer M2 verification from M1 tests or hosted M1 CI.

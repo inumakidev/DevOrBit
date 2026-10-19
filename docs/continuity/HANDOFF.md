@@ -1,6 +1,6 @@
 # Development handoff
 
-**Updated:** 2026-10-19 — M1 final closure review
+**Updated:** 2026-10-19 — M2.1 documentation closure
 
 ## Current checkpoint
 
@@ -14,13 +14,17 @@
 | M1.2A Workspace Foundation | **Accepted**. |
 | M1.2B Core Contracts | **Accepted with non-blocking issues**. |
 | M1 — Foundation & Contracts | **Complete / Accepted**. |
-| M2 — Registry & Resolver | **Planning pending**; no implementation has started. |
-| Phase 4 — Controlled Implementation | **In progress**; M1 is complete, M2 planning pending, and no M2 implementation has started. |
+| M2.1 — Registry & Resolver architecture | **Approved**; documentation closure **Complete**. |
+| M2.2 — Registry, Integrity & Provenance | **Not Authorized**. |
+| M2.3–M2.5 | **Not Started**; M2 tests **Not Executed**. |
+| Phase 4 — Controlled Implementation | **Not started**; M1 is complete; M2.1 documentation closure is complete, but implementation has not started. M2.2 is not authorized. |
 | M1.2B contract tests | **29 reported passing**; not rerun during the read-only acceptance audit. |
 | GitHub repository | User confirms private `inumakidev/DevOrBit`, branch `master`; initial commit pushed to `origin/master`. |
 | Hosted GitHub Actions | Successful per user-provided screenshots: `Workspace validation` run #1 / ID `39215771440`; `validate` job ID `117939137329`. |
-| Completed this session | M1 final closure documentation and acceptance review. |
-| Next task | Plan M2 against approved sources; planning only, no implementation without separate authorization. |
+| Completed this session | M2.1 documentation-only closure and read-only validation. |
+| Next task | Review/confirm the listed exact technical prerequisites before seeking separate M2.2 authorization. |
+
+The canonical M2.1 architecture, acceptance matrix, trust boundary, and unresolved exact prerequisites are in [11-registry-and-resolver-architecture.md](../main/11-registry-and-resolver-architecture.md). Approved design is not evidence of implementation; no M2 tests have been executed.
 
 ## M1.2A implementation
 

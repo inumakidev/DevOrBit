@@ -41,6 +41,8 @@ A target installation lock is designed to record the toolkit version, exact asse
 
 Resolution must be deterministic and explainable. Missing required dependencies, dependency cycles, incompatible versions, and trust failures block a plan. Optional features may be omitted only with explicit disclosure. Unsupported mandatory capabilities must not be silently treated as available.
 
+**M2 boundary:** the approved M2 design uses internal `@devorbit/registry` and `@devorbit/resolver` libraries only; CLI integration is deferred. The registry owns local discovery and trust verification; the resolver plans over immutable verified data and performs no filesystem or network operations. No M2 implementation is claimed. See the [canonical M2.1 registry and resolver architecture](11-registry-and-resolver-architecture.md) for the approved baseline, unresolved exact implementation prerequisites, and acceptance matrix.
+
 ## Installer transaction
 
 The approved transaction is:

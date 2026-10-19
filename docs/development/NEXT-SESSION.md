@@ -7,12 +7,16 @@
 - M1.2A — Workspace Foundation: **Accepted**.
 - M1.2B — Core Contracts: **Accepted with non-blocking issues**.
 - M1 — Foundation & Contracts: **Complete / Accepted**.
-- M2 — Registry & Resolver: **Planning pending**; no implementation has started.
+- M2.1 — Registry & Resolver architecture: **Approved**; documentation closure **Complete**.
+- M2.2 — Registry, Integrity & Provenance: **Not Authorized**.
+- M2.3–M2.5: **Not Started**.
+- M2 tests: **Not Executed**.
 - Contract tests: **29 reported passing** in the M1.2B implementation session; not rerun during the read-only acceptance audit.
 - Hosted GitHub Actions: **Successful**, supported by user-provided screenshots; run/job identifiers recorded below.
 - GitHub repository: **Private per user confirmation**, `inumakidev/DevOrBit`, branch `master`; initial commit and push confirmed.
-- Completed this session: M1 final documentation closure and acceptance review.
-- Next task: Plan M2 — Registry & Resolver against the approved source documents and roadmap. Planning only; do not implement M2 without separate explicit authorization.
+- Completed this session: M2.1 documentation-only closure and read-only validation.
+- Current task: Review/confirm the exact M2.1 implementation prerequisites recorded in the canonical specification.
+- Next gate: resolve exact implementation prerequisites in the [canonical M2.1 specification](../main/11-registry-and-resolver-architecture.md), then obtain separate authorization before M2.2. Do not implement M2.2 under this checkpoint.
 
 Read the required continuity files in order as listed in [AGENTS.md](../../AGENTS.md), then inspect the actual repository before any future implementation.
 
@@ -22,9 +26,17 @@ M1 — Foundation & Contracts is **Complete / Accepted**. M1.2A is **Accepted** 
 
 The user-provided GitHub screenshots show the successful `Workspace validation` workflow run #1 (ID `39215771440`) and successful `validate` job (ID `117939137329`) for `master`. The run and job URLs, durations, and screenshot-reported passing commands are recorded in the testing log. One annotation warning and one notice remain uninspected; they are not acceptance blockers. No GitHub contact or Git operation was performed for this closure.
 
-## M2 planning handoff — Registry & Resolver
+## M2.1 architecture approval and documentation closure
 
-**Status:** Planning pending; implementation not started.
+The user approved the M2.1 architecture: internal registry and resolver libraries only, no CLI integration, and preservation of M1 contracts. Detached attestations, single-administrator authenticated policy updates, 720-hour validity, compatibility semantics, optional trust policy, stable-only default, and standard local protected-state limitations are recorded in the [canonical specification](../main/11-registry-and-resolver-architecture.md).
+
+**Current status:** M2.1 architecture Approved; documentation closure Complete. M2.2 Not Authorized. M2.3–M2.5 Not Started. M2 tests Not Executed.
+
+Before M2.2, confirm the exact directory-record hash framing/empty-directory rule, attestation lookup encoding, initial resource limits, diagnostic mapping, supported Git platform assumptions, and protected-state adapter. Standard local protected state has a documented privileged-restoration limitation; hardware-backed storage is not mandatory.
+
+## Historical M2 planning handoff — Registry & Resolver
+
+This section preserves the earlier planning checkpoint. It is superseded for current status by the M2.1 architecture approval above; its M2 scope and Definition of Done remain relevant.
 
 **Approved objectives and deliverables:**
 

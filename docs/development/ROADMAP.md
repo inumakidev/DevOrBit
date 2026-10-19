@@ -13,8 +13,8 @@
 | M1.2A — Workspace Foundation | Accepted | Workspace foundation and local validation were accepted. |
 | M1.2B — Core Contracts | Accepted with non-blocking issues | 14 files added and four configuration files modified; 29 contract tests and local validation were reported successful. |
 | M1 — Foundation & Contracts | Complete / Accepted | All six M1 requirements and Definition of Done accepted; details and evidence provenance are recorded in `TESTING-LOG.md`. |
-| M2 — Registry & Resolver | Planning pending | Approved scope is summarized below; no M2 implementation has started. |
-| Phase 4 — Controlled Implementation | In progress | M1 is complete; M2 planning is pending and no M2 implementation has started. |
+| M2 — Registry & Resolver | M2.1 architecture approved; documentation closure complete | M2.2 not authorized; M2.3–M2.5 not started; no M2 implementation or tests. |
+| Phase 4 — Controlled Implementation | Not started | M1 is complete; M2.1 documentation closure is complete, but implementation has not started. M2.2 is not authorized. |
 | Phase 5 — Real Project Validation | Not started | Disposable sample repositories first; personal project use only after safeguards. |
 
 ## Phase 4 milestones
@@ -29,13 +29,13 @@ M1 is **Complete / Accepted**. Deferred non-blocking follow-up includes more exp
 
 ### M2 — Registry & Resolver
 
-**Status: Planning pending; implementation not started.**
+**Status:** M2.1 architecture **Approved**; documentation closure **Complete**. M2.2 **Not Authorized**. M2.3–M2.5 **Not Started**. No M2 implementation is claimed; M2 tests have **Not been executed**.
 
 **Approved objective and deliverables:** implement local canonical content indexing and integrity/provenance validation; expand required and optional dependencies with deterministic ordering; reject dependency cycles, incompatible versions, missing required assets, unsupported mandatory capabilities, conflicts, and trust failures; produce explainable plans; and add negative tests for conflict and trust failures. This scope derives from the approved architecture and implementation/continuity blueprint; it is not permission to begin implementation.
 
-**Dependency:** M1 Foundation & Contracts is Complete / Accepted. M2 is expected to consume the established asset manifest/core contracts and canonical content model; exact package/file boundaries, interfaces, and implementation sequence must be settled in M2 planning against the approved architecture and blueprint. Do not infer extra scope.
+**Dependency and boundary:** M1 Foundation & Contracts is Complete / Accepted. M2 consumes existing M1 contracts without changing their public API, schema semantics, or error codes. Approved M2.1 boundary is internal registry and resolver libraries only; CLI integration is deferred. See the [canonical M2.1 architecture](../main/11-registry-and-resolver-architecture.md). Do not infer implementation or expand scope.
 
-**Definition of Done:** deterministic plans and verified failure behavior for all mandatory conflict cases, including the blueprint’s required rejection cases. Planning must define measurable coverage for these requirements before implementation authorization.
+**Definition of Done:** deterministic plans and verified failure behavior for all mandatory conflict cases. The detailed proposed matrix is in the canonical specification. It is approved acceptance design, not evidence of tests passing.
 
 See the approved [master documentation (architecture and detailed design)](../../DevOrbit_Master_Documentation.docx), [Architecture](../main/02-architecture.md), [Features and scope](../main/03-features-and-scope.md), [Evaluation and releases](../main/09-evaluation-and-releases.md), and the [implementation and continuity blueprint](../../DevOrbit_Development_and_Continuity.docx).
 

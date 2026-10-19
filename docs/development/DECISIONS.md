@@ -21,12 +21,17 @@ This register records approved decisions from the authoritative project document
 | ADR-015 | M1.2A Workspace Foundation is Accepted; M1.2B Core Contracts is Accepted with non-blocking issues; M1 Foundation & Contracts is Complete / Accepted. Acceptance uses implementation reports, prior audits, and user-provided GitHub Actions screenshots. | Accepted |
 | ADR-016 | User confirms private `inumakidev/DevOrBit`, branch `master`, initial commit `6c2f9985031104d36e9a0949a3b3b2b4862b3a2d` (`chore: initialize DevOrbit foundation and core contracts`), and successful push to `origin/master`. User-provided screenshots show `Workspace validation` run #1 (ID `39215771440`) and `validate` job (ID `117939137329`) succeeded. One annotation warning and one notice remain uninspected. | Recorded; warning/notice deferred |
 | ADR-017 | M2 — Registry & Resolver is next; planning pending, implementation not started. Its approved objectives and Definition of Done remain as specified in the roadmap and implementation blueprint. | Approved scope; planning pending |
+| ADR-018 | M2.1 architecture approved: internal registry and resolver libraries only; CLI integration deferred; accepted M1 public contracts, manifest schema, errors, and tests remain unchanged. Detached Ed25519 attestations, a single administrator signing key with authenticated versioned policy updates, 720-hour policy lifetime, optional-only trust-failure warnings, mandatory capability requirements, unrestricted empty agent/stack/mode allowlists, and stable-only default resolution are approved policy directions. | Approved by user; implementation not started |
+| ADR-019 | Trust uses standard locally protected state with documented privileged-restoration limitations, local UTC time, and in-process monotonic checks. Hardware-backed rollback resistance is not mandatory. | Approved by user; implementation not started |
 
 ## Open selections (not architecture changes)
 
 - Keep the accepted Node.js/pnpm/tool pins recorded in [CURRENT-STATUS.md](CURRENT-STATUS.md); revisit only with explicit approval.
 - The CLI parser and lint/format tooling were selected for M1; revisit only with explicit approval.
 - Validate specific Codex and Copilot environments with real smoke tests.
-- M2 planning must establish the implementation boundaries and measurable verification plan for the approved M2 requirements without expanding scope.
+- M2.1 documentation closure is complete. M2.2 is not authorized; M2.3–M2.5 are not started. The canonical baseline is [11-registry-and-resolver-architecture.md](../main/11-registry-and-resolver-architecture.md).
+- Confirm the exact directory framing/empty-directory behavior for `devorbit-asset-tree-v1`, attestation lookup encoding, initial resource limits, final diagnostic mapping, Git platform support, and protected-state adapter before M2.2.
 
 These are implementation and verification items, not permission to change approved architecture or begin M2 implementation. The M1.2B non-blocking findings remain open: explicit Ajv semantic-boundary tests and core TypeScript tooling decoupling. The Vitest config-loader warning and GitHub Actions annotation warning/notice remain uninspected or unresolved; none blocks M1 acceptance.
+
+The older ADR-017 wording that M2 boundaries remain planning-pending is superseded by ADR-018/019 for the M2.1 architecture checkpoint. This does not authorize implementation.

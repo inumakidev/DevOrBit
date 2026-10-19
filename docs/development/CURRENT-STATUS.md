@@ -15,8 +15,10 @@
 | M1.2A — Workspace Foundation | Accepted | Workspace foundation and local validation were accepted. |
 | M1.2B — Core Contracts | Accepted with non-blocking issues | 14 new files and four configuration files were modified; implementation-session checks were reported successful. |
 | M1 — Foundation & Contracts | Complete / Accepted | All six requirements and Definition of Done accepted; local results are implementation-session reports and hosted CI evidence is from user-provided screenshots. |
-| M2 — Registry & Resolver | Planning pending | Scope is approved in the roadmap/blueprint; planning handoff follows below. No M2 implementation has started. |
-| Phase 4 — Controlled Implementation | In progress | M1 is complete; M2 planning is pending and no M2 implementation has started. |
+| M2.1 — Registry & Resolver architecture | Approved; documentation closure complete | Canonical baseline: [M2.1 architecture](../main/11-registry-and-resolver-architecture.md). No M2 implementation or tests. |
+| M2.2 — Registry, Integrity & Provenance | Not authorized | Requires separate implementation authorization and resolution of listed exact technical prerequisites. |
+| M2.3–M2.5 | Not started | Resolver, plans/diagnostics, and acceptance testing have not begun. |
+| Phase 4 — Controlled Implementation | Not started | M1 is complete; M2.1 documentation closure is complete, but implementation has not started. |
 | Core contract tests | Reported PASS (29) | Reported from the M1.2B implementation session; not rerun during the acceptance audit. |
 | Broader application/integration tests | Not run | No broader end-to-end application test result is claimed. |
 | Phase 5 — Real Project Validation | Not started | Requires later safeguards and authorization. |
@@ -93,8 +95,10 @@ The expected 25 Markdown documents and the two authoritative DOCX sources remain
 
 ## Current task and next milestone
 
-**Current task:** M1 documentation reconciliation — completed.
+**Current task:** M2.1 documentation-only closure — complete.
 
 **M1 final acceptance review:** All six requirements are **Accepted**. The record distinguishes the implementation-session reports, acceptance audits, user confirmations, and user-provided CI screenshots. M1 is **Complete / Accepted**. Deferred issues remain non-blocking and are not marked resolved.
 
-**Next milestone:** M2 — Registry & Resolver, planning pending. Its approved objectives and Definition of Done are summarized in [ROADMAP.md](ROADMAP.md) and detailed in the [implementation and continuity blueprint](../../DevOrbit_Development_and_Continuity.docx). No M2 implementation has started; obtain explicit authorization before implementing it.
+**Current checkpoint:** M2.1 — Registry & Resolver architecture is approved; documentation closure is complete. M2.2 is not authorized, and M2.3–M2.5 have not started. See [ROADMAP.md](ROADMAP.md) and the [canonical M2.1 architecture](../main/11-registry-and-resolver-architecture.md). No M2 implementation has started.
+
+**M2.1 checkpoint:** Architecture is approved by the user. Documentation closure is complete following read-only documentation validation. M2.2 is not authorized; M2.3–M2.5 are not started. M2 tests are **Not Executed**. The canonical specification identifies exact details requiring confirmation before M2.2.

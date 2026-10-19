@@ -4,7 +4,7 @@
 
 DevOrbit is an approved design for a versioned, modular toolkit that combines reusable AI coding skills, policies, repeatable workflows, technology-stack profiles, safe project installation, agent adapters, quality evaluation, governance, and project continuity.
 
-> **Project status:** Documentation Foundation is **Approved**. M1.2A — Workspace Foundation is **Accepted**. M1.2B — Core Contracts is **Accepted with non-blocking issues**. M1 — Foundation & Contracts is **Complete / Accepted**. The user-provided screenshots show successful hosted GitHub Actions validation; see the recorded run evidence in [TESTING-LOG.md](docs/development/TESTING-LOG.md). M2 — Registry & Resolver is next, **Planning Pending**; no M2 implementation has started.
+> **Project status:** Documentation Foundation is **Approved**. M1.2A — Workspace Foundation is **Accepted**. M1.2B — Core Contracts is **Accepted with non-blocking issues**. M1 — Foundation & Contracts is **Complete / Accepted**. The user-provided screenshots show successful hosted GitHub Actions validation; see [TESTING-LOG.md](docs/development/TESTING-LOG.md). M2.1 architecture is **Approved** and documentation closure is **Complete**. M2.2 is **Not Authorized**; M2.3–M2.5 are **Not Started**. No M2 implementation or tests are claimed.
 
 ## What DevOrbit is intended to provide
 
@@ -27,11 +27,13 @@ See the [approved overview](docs/main/01-overview.md), [architecture](docs/main/
 | Documentation Foundation | Approved |
 | M1.1 — Environment Inspection | Completed |
 | M1.1A — Pre-implementation Reconciliation | Completed |
-| Phase 4 — Controlled Implementation | In Progress |
+| Phase 4 — Controlled Implementation | Not Started |
 | M1.2A — Workspace Foundation | Accepted |
 | M1.2B — Core Contracts | Accepted with non-blocking issues |
 | M1 — Foundation & Contracts | Complete / Accepted |
-| M2 — Registry & Resolver | Planning Pending; implementation not started |
+| M2.1 — Registry & Resolver architecture | Approved; documentation closure complete |
+| M2.2 — Registry, Integrity & Provenance | Not Authorized |
+| M2.3–M2.5 | Not Started; M2 tests not executed |
 | M1.2B contract tests | 29 reported passing; not rerun during acceptance audit |
 | Initial commit / push | User-confirmed; commit `6c2f9985031104d36e9a0949a3b3b2b4862b3a2d` pushed to `origin/master` |
 | Hosted GitHub Actions | Successful per user-provided screenshots; run #1 and job details in [TESTING-LOG.md](docs/development/TESTING-LOG.md) |
@@ -43,13 +45,14 @@ M1.2A acceptance covers the workspace foundation. M1.2B acceptance covers core c
 ## Documentation map
 
 - `docs/main/` — product overview, architecture, features, CLI/installation design, skills, stacks, adapters, security, evaluation, and troubleshooting.
+- [M2.1 Registry & Resolver architecture](docs/main/11-registry-and-resolver-architecture.md) — approved design baseline, not implementation evidence.
 - `docs/development/` — roadmap, current status, development and test logs, decisions, known issues, and the next-session task.
 - `docs/continuity/` — project context, handoff, and mandatory agent onboarding.
 - [AGENTS.md](AGENTS.md) — repository-level instructions for compatible AI agents. Platform discovery and enforcement capabilities must be verified, not assumed.
 
 ## Development safety
 
-M1 is complete. M2 planning is pending; do not begin M2 implementation without explicit authorization. Do not perform Git staging, commits, pushes, fetches, or pulls, contact the remote, install additional dependencies, initialize frameworks, provision databases, or deploy without the required separate authorization. Follow [AGENTS.md](AGENTS.md) and the [agent onboarding guide](docs/continuity/AGENT-ONBOARDING.md) before development.
+M1 is complete. M2.1 architecture is approved; documentation closure is complete. M2.2 is not authorized. Do not begin M2 implementation without separate explicit authorization. Git/GitHub operations are user-managed. Follow [AGENTS.md](AGENTS.md) and the [agent onboarding guide](docs/continuity/AGENT-ONBOARDING.md) before development.
 
 ## Approved planning baseline
 

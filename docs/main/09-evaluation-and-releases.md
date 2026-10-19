@@ -28,7 +28,7 @@ Use **Pass**, **Fail**, **Not Applicable** (with reason), or **Not Verified**. N
 | M5 — Starter Skills & Workflows | Six starter skills and three workflow prototypes. | Contract-valid assets, explicit dependencies, risk-based approvals, authorization tests, workflow fixtures. |
 | M6 — Evaluation & Release Candidate | Full evaluation, platform compatibility, release and recovery checks. | Mandatory gates Pass or justified Not Applicable; critical failures block release. |
 
-Each milestone requires its scope and acceptance criteria to be authorized before implementation. **M1 — Foundation & Contracts is COMPLETE / ACCEPTED**. M1.2A — Workspace Foundation is **Accepted**; M1.2B — Core Contracts is **Accepted with non-blocking issues**. M2 — Registry & Resolver is the next milestone, **Planning Pending**; implementation has **Not Started**. The approved M2 scope and Definition of Done are recorded in [ROADMAP.md](../development/ROADMAP.md).
+Each milestone requires its scope and acceptance criteria to be authorized before implementation. **M1 — Foundation & Contracts is COMPLETE / ACCEPTED**. M1.2A — Workspace Foundation is **Accepted**; M1.2B — Core Contracts is **Accepted with non-blocking issues**. M2.1 architecture is **Approved** and its documentation closure is **Complete**. M2.2 is **Not Authorized**; M2.3–M2.5 are **Not Started**. No M2 implementation is claimed. See [ROADMAP.md](../development/ROADMAP.md) for status and the [canonical M2.1 specification](11-registry-and-resolver-architecture.md) for the acceptance matrix.
 
 ## Release roadmap
 
@@ -45,4 +45,4 @@ No release is currently shipped. Release gates include no critical security fail
 
 ## Current evaluation status
 
-The M1.2B implementation session reported **29 passing Vitest contract tests**. User-provided GitHub Actions evidence shows **Workspace validation #1** succeeded (run ID `39215771440`); see [TESTING-LOG.md](../development/TESTING-LOG.md) for the evidence record and attribution. These milestone checks do not constitute broader end-to-end/product evaluation, and no benchmark result is asserted. See [TESTING-LOG.md](../development/TESTING-LOG.md) for recorded test outcomes and evidence boundaries.
+The M1.2B implementation session reported **29 passing Vitest contract tests**. User-provided GitHub Actions evidence shows **Workspace validation #1** succeeded (run ID `39215771440`); see [TESTING-LOG.md](../development/TESTING-LOG.md) for the evidence record and attribution. These milestone checks do not constitute broader end-to-end/product evaluation, and no benchmark result is asserted. M2 acceptance cases in the [canonical M2.1 specification](11-registry-and-resolver-architecture.md) are approved design criteria, not passing test evidence; **M2 tests have not been executed**. See [TESTING-LOG.md](../development/TESTING-LOG.md) for recorded test outcomes and evidence boundaries.
