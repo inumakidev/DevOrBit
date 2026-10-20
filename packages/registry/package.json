@@ -13,6 +13,9 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "build": "tsc -p tsconfig.json"
   },
+  "dependencies": {
+    "@devorbit/core": "workspace:*"
+  },
   "devDependencies": {
     "@types/node": "22.20.5",
     "typescript": "5.9.3"

@@ -45,6 +45,10 @@ importers:
         version: 7.8.0
 
   packages/registry:
+    dependencies:
+      '@devorbit/core':
+        specifier: workspace:*
+        version: link:../core
     devDependencies:
       '@types/node':
         specifier: 22.20.5
