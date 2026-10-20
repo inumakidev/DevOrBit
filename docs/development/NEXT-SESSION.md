@@ -11,16 +11,18 @@
 - M2.2 design and specification: **ACCEPTED / PUSHED**; user reports baseline commit `21dbe8a`; seven exact-parameter groups synchronized; ADR-021 through ADR-024 **APPROVED / DOCUMENTED**.
 - M2.2 Phase 1B asset-tree integrity: **COMPLETE / ACCEPTED / PUSHED / CI PASSED** per user report.
 - M2.2 Phase 1C manifest-to-content record binding: **COMPLETE / ACCEPTED / PUSHED / CI PASSED** per user report.
-- Local M2.2 validation: lint, typecheck, and build passed; tests **70/70** (M1 29, Phase 1B 22, Phase 1C 19), all per user report.
+- M2.2 Phase 1D pure attestation framing: **IMPLEMENTED / LOCALLY VALIDATED**; focused tests 16/16, focused Biome passed, and read-only implementation audit **ACCEPT**.
+- Phase 1D push and remote CI acceptance: **PENDING CONFIRMATION / NOT VERIFIED**; no commit hash or workflow run is recorded.
+- Earlier M1/Phase 1B/Phase 1C local validation: lint, typecheck, and build passed; tests **70/70** (M1 29, Phase 1B 22, Phase 1C 19), all per user report. These figures do not include Phase 1D.
 - CI build-order issue: clean-checkout registry typecheck lacked built `@devorbit/core` declarations; a core build step was added immediately before root typecheck. User reports the latest workflow passed. No workflow run number or Phase 1B/1C commit hash is asserted.
 - M2.2 overall implementation: **IN PROGRESS / INCOMPLETE**.
 - M2.3 resolver: **NOT STARTED**.
 - Contract tests: **29 reported passing** in the M1.2B implementation session; not rerun during the read-only acceptance audit.
 - Hosted GitHub Actions: **Successful**, supported by user-provided screenshots; run/job identifiers recorded below.
 - GitHub repository: **Private per user confirmation**, `inumakidev/DevOrBit`, branch `master`; initial commit and push confirmed.
-- Completed: M2.2 Phase 1A read-only preflight and Phase 1B/1C implementation closures per user reports. M2.2 remains incomplete.
-- Current task: M2.2 Phase 1D **READ-ONLY DISCOVERY AND PLANNING**.
-- Next gate: Do not design, approve, or implement Phase 1D in advance of its discovery/planning outcome and required approval. M2.3 remains not started. No implementation is authorized by this handoff.
+- Completed: M2.2 Phase 1A read-only preflight and Phase 1B/1C implementation closures per user reports; Phase 1D framing implementation and focused local verification.
+- Current task: M2.2 Phase 1E **READ-ONLY DISCOVERY**, conditional on explicit confirmation that Phase 1D has been pushed and CI acceptance passed.
+- Next gate: If Phase 1D push/CI acceptance is not confirmed, stop before Phase 1E and request the missing evidence. Phase 1E discovery must not be treated as design approval or implementation authorization. M2.3 remains not started.
 
 Read the required continuity files in order as listed in [AGENTS.md](../../AGENTS.md), then inspect the actual repository before any future implementation.
 
@@ -40,11 +42,11 @@ The M2.2 freeze resolves file-only hashing with empty directories excluded, atte
 
 ## Current M2.2 documentation checkpoint
 
-The M2.2 design/specifications are complete and accepted; the seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are documented in [the canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md). ADR-024 applies JCS canonicalization to the diagnostic `detail` comparison value and supersedes ADR-023 only for its detail key-ordering and serialization rule. Phase 1B and Phase 1C are complete, accepted, pushed, and CI passed per user report. Overall M2.2 implementation remains **IN PROGRESS / INCOMPLETE**; M2.3 is **NOT STARTED**.
+The M2.2 design/specifications are complete and accepted; the seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are documented in [the canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md). ADR-024 applies JCS canonicalization to the diagnostic `detail` comparison value and supersedes ADR-023 only for its detail key-ordering and serialization rule. Phase 1B and Phase 1C are complete, accepted, pushed, and CI passed per user report. Phase 1D pure framing is implemented and locally validated (16/16 focused tests, focused Biome pass, read-only audit ACCEPT); its push and remote CI acceptance are not confirmed. Overall M2.2 implementation remains **IN PROGRESS / INCOMPLETE**; M2.3 is **NOT STARTED**.
 
 The user reports local lint, typecheck, and build passed and 70/70 tests passed (M1 29, Phase 1B 22, Phase 1C 19). CI initially failed on fixture formatting and clean-checkout core package resolution; a dedicated core build step was added before root typecheck, and the user reports the latest workflow passed. These results do not imply full M2.2 completion, deployment, or release.
 
-The next task is M2.2 Phase 1D **READ-ONLY DISCOVERY AND PLANNING**. Phase 1D has not been designed, approved, or implemented. Do not implement Phase 1D or M2.3 without separate explicit authorization. Git/GitHub operations remain user-managed.
+The next task is M2.2 Phase 1E **READ-ONLY DISCOVERY**, conditional on confirmation of Phase 1D push and CI acceptance. Phase 1E has not been designed or approved. Do not begin Phase 1E implementation or M2.3 without separate explicit authorization. Git/GitHub operations remain user-managed.
 
 ## Historical M2 planning handoff — Registry & Resolver
 

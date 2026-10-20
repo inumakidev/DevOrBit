@@ -24,7 +24,7 @@ The project is a versioned, modular AI development toolkit design for reusable s
 - Documentation Foundation: Approved.
 - M1.1 Environment Inspection: Completed.
 - M1.1A/M1.1B reconciliation and preflight: Completed.
-- Phase 4 implementation: In Progress; M2.2 Phase 1B and Phase 1C are complete, accepted, pushed, and CI passed per user report. Overall M2.2 remains incomplete.
+- Phase 4 implementation: In Progress; M2.2 Phase 1B/1C are complete, accepted, pushed, and CI passed per user report. Phase 1D framing is implemented and locally validated; push and CI acceptance are not confirmed. Overall M2.2 remains incomplete.
 - M1.2A Workspace Foundation: Accepted.
 - M1.2B Core Contracts: Accepted with non-blocking issues.
 - M1 — Foundation & Contracts: COMPLETE / ACCEPTED / PUSHED.
@@ -36,13 +36,15 @@ The project is a versioned, modular AI development toolkit design for reusable s
 - M2.2 Registry Phase 1A read-only preflight: COMPLETED.
 - M2.2 Phase 1B asset-tree integrity: COMPLETE / ACCEPTED / PUSHED / CI PASSED per user report.
 - M2.2 Phase 1C manifest-to-content record binding: COMPLETE / ACCEPTED / PUSHED / CI PASSED per user report.
-- M2.2 local checks: lint, typecheck, and build passed; 70/70 tests passed (M1 29, Phase 1B 22, Phase 1C 19), per user report.
+- M2.2 Phase 1D attestation framing: IMPLEMENTED / LOCALLY VALIDATED; focused tests 16/16, focused Biome passed, read-only implementation audit ACCEPT.
+- Phase 1D push/remote CI acceptance: PENDING CONFIRMATION / NOT VERIFIED; no workflow run number or commit hash recorded.
+- Earlier M1/Phase 1B/Phase 1C local checks: lint, typecheck, and build passed; 70/70 tests passed (M1 29, Phase 1B 22, Phase 1C 19), per user report. These figures do not include Phase 1D.
 - CI build-order remediation: core package build step added before root typecheck after a clean-checkout package-resolution failure; latest workflow passed per user report.
 - M2.2 overall implementation: IN PROGRESS / INCOMPLETE.
 - M2.3 resolver: NOT STARTED.
-- Next: M2.2 Phase 1D READ-ONLY DISCOVERY AND PLANNING; not yet designed, approved, or implemented.
+- Next: M2.2 Phase 1E READ-ONLY DISCOVERY, conditional on Phase 1D CI acceptance. Phase 1E is not designed or approved.
 
-**Approved design versus implementation status:** M2.2's nine specification groups are approved at design level and documented in the [canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md). The seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are synchronized and documented in [DECISIONS.md](../development/DECISIONS.md). The canonical comparator preserves ordinal string comparison for its first five logical fields; its sixth `message` field maps to `RegistryDiagnostic.detail` and uses the RFC 8785 JCS byte comparison specified by ADR-024. M2.2 design/specifications are complete and accepted. Phase 1B and Phase 1C implementation are complete, accepted, pushed, and CI passed per user report. No Phase 1B/1C commit hashes or workflow run numbers are asserted. Overall M2.2 remains IN PROGRESS / INCOMPLETE; M2.3 is NOT STARTED. Phase 1D is next for read-only discovery and planning only; it has not been designed, approved, or implemented. Windows/Git/OS security properties remain unverified.
+**Approved design versus implementation status:** M2.2's nine specification groups are approved at design level and documented in the [canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md). The seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are synchronized and documented in [DECISIONS.md](../development/DECISIONS.md). The canonical comparator preserves ordinal string comparison for its first five logical fields; its sixth `message` field maps to `RegistryDiagnostic.detail` and uses the RFC 8785 JCS byte comparison specified by ADR-024. M2.2 design/specifications are complete and accepted. Phase 1B and Phase 1C implementation are complete, accepted, pushed, and CI passed per user report. Phase 1D pure framing is implemented and locally validated: 16/16 focused tests and focused Biome passed; its read-only implementation audit returned ACCEPT. Phase 1D push and remote CI acceptance remain unconfirmed. No Phase 1D commit hash or workflow run number is asserted. Overall M2.2 remains IN PROGRESS / INCOMPLETE; M2.3 is NOT STARTED. Next is Phase 1E READ-ONLY DISCOVERY, conditional on Phase 1D CI acceptance; Phase 1E is not designed or approved. Windows/Git/OS security properties remain unverified.
 
 **Historical audit context:** the earlier final audit listed these three clarification questions as unresolved at that time. The later approved ADR-021 resolves them; the historical finding is retained in [HANDOFF.md](HANDOFF.md) and is not a current blocker.
 
@@ -52,7 +54,7 @@ User-confirmed GitHub record: private repository `https://github.com/inumakidev/
 
 ## Safety boundaries
 
-Do not change approved decisions without explicit approval. M1 is COMPLETE / ACCEPTED / PUSHED; M2.1 architecture is COMPLETE / ACCEPTED / PUSHED; M2.2 design/specifications are COMPLETE / ACCEPTED. Phase 1B and Phase 1C are COMPLETE / ACCEPTED / PUSHED with CI passed per user report; local lint, typecheck, build, and 70/70 tests are user-reported. Overall M2.2 implementation is IN PROGRESS / INCOMPLETE; M2.3 is NOT STARTED. Phase 1D is READ-ONLY DISCOVERY AND PLANNING and has not been designed, approved, or implemented. See the [canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md) and [decision record](../development/DECISIONS.md). Git/GitHub authority and all Git/GitHub operations remain exclusively user-managed. Do not initialize frameworks, provision databases, deploy, contact GitHub, stage, commit, push, fetch, pull, or overwrite existing files without required authorization. Keep secrets and personal data out of logs and evidence.
+Do not change approved decisions without explicit approval. M1 is COMPLETE / ACCEPTED / PUSHED; M2.1 architecture is COMPLETE / ACCEPTED / PUSHED; M2.2 design/specifications are COMPLETE / ACCEPTED. Phase 1B and Phase 1C are COMPLETE / ACCEPTED / PUSHED with CI passed per user report. Phase 1D framing is IMPLEMENTED / LOCALLY VALIDATED, with push/CI acceptance unconfirmed; no signature verification or trust-policy implementation is claimed. The prior 70/70 test result applies to M1 and Phases 1B/1C, not Phase 1D. Overall M2.2 implementation is IN PROGRESS / INCOMPLETE; M2.3 is NOT STARTED. Next is Phase 1E READ-ONLY DISCOVERY, conditional on Phase 1D CI acceptance; Phase 1E is not designed or approved. See the [canonical registry and resolver architecture](../main/11-registry-and-resolver-architecture.md) and [decision record](../development/DECISIONS.md). Git/GitHub authority and all Git/GitHub operations remain exclusively user-managed. Do not initialize frameworks, provision databases, deploy, contact GitHub, stage, commit, push, fetch, pull, or overwrite existing files without required authorization. Keep secrets and personal data out of logs and evidence.
 
 ## Source precedence
 

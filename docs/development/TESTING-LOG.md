@@ -183,6 +183,19 @@ The workflow remediation changes build order only: core is built before root typ
 
 Phase 1C implements an internal pure manifest-to-content record-binding helper. It hashes exact raw manifest bytes separately from the content-tree digest; strictly decodes UTF-8 and rejects a BOM; requires one asset; binds exact identity, version, and provenance directory; reuses Phase 1B asset-tree integrity computation; uses internal M2 failure classifications; and preserves existing M1 validation behavior. It adds no public registry API and does not implement filesystem discovery, trust verification, Git-object access, or resolver behavior.
 
+## M2.2 Phase 1D focused verification — 2026-10-20
+
+The following focused results were observed during the Phase 1D implementation session. They do not establish a full-suite, root lint, typecheck, build, remote CI, push, or release result.
+
+| Check | Observed result | Outcome |
+|---|---|---|
+| `pnpm exec vitest run tests/unit/registry/provenance/attestation-framing.test.ts` | One test file passed; 16/16 tests passed. | PASS |
+| `pnpm exec biome check packages/registry/package.json packages/registry/src/provenance/attestation-framing.ts tests/unit/registry/provenance/attestation-framing.test.ts tests/fixtures/registry/attestation-framing-vectors.json` | Four files checked; no fixes applied. | PASS |
+| Read-only Phase 1D implementation audit | Review against canonical architecture §5, Phase 1D scope, and M1/Phase 1C contracts concluded ACCEPT. | ACCEPT |
+| Full suite, root lint/typecheck/build, Phase 1D push, and remote CI | Not evidenced for Phase 1D in this record. | NOT VERIFIED |
+
+The fixture contains independently assembled fixed-byte vectors and recorded SHA-256 values. The inconsistent version/path vector is a negative case; the canonical version/path mutation is separately tested as a valid binding. These tests verify framing only, not signature validity, source authenticity, or trust.
+
 ## Next verification task
 
-M2.2 Phase 1D is **READ-ONLY DISCOVERY AND PLANNING** only. It is not yet designed, approved, or implemented. No Phase 1D tests or implementation are claimed. M2.3 resolver remains **NOT STARTED**.
+Phase 1D remote CI acceptance remains pending confirmation. Once the user confirms the Phase 1D change has been pushed and its CI acceptance passed, the next task is M2.2 Phase 1E **READ-ONLY DISCOVERY**. Phase 1E has not been designed or approved here and is not implementation authorization. M2.2 remains **IN PROGRESS / INCOMPLETE**; M2.3 resolver remains **NOT STARTED**.
