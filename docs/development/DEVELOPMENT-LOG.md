@@ -2,6 +2,16 @@
 
 This log records actual work, not planned implementation. The statement that no toolkit source code existed applies to the initial documentation baseline below; later dated entries record the authorized M1 work.
 
+## 2026-10-20 — M2.2 JCS Documentation Closure
+
+- **Scope:** Documentation-only update recording acceptance of the internal RFC 8785 JCS canonicalizer and setting strict trust-policy parsing as the next gated implementation target. M2.2 remains IN PROGRESS / INCOMPLETE; M2.3 remains NOT STARTED.
+- **Implementation recorded:** `packages/registry/src/provenance/jcs.ts`; tests in `tests/unit/registry/provenance/jcs.test.ts`; fixed RFC 8785 number and object vectors in `tests/fixtures/registry/jcs-vectors.json`. The module is internal-only and caller-budgeted; no policy parser or diagnostic/snapshot caller integration is claimed.
+- **Acceptance evidence:** Focused JCS tests passed 21/21, Biome passed on the three JCS files, and registry package typecheck passed. The user separately confirms full project validation, GitHub Actions success, and a clean working tree with `master` synchronized to `origin/master`. Those user-confirmed repository/remote facts were not independently inspected; no commit hash or workflow run ID was supplied.
+- **Architecture boundary:** The complete canonical-snapshot byte cap of 64 MiB remains an existing approved requirement. Numeric raw policy/update limits, policy collection limits, diagnostic-detail budgets, and JCS traversal limits are not approved constants by virtue of this implementation. They require explicit confirmation/decision before trust-policy parsing or integration.
+- **Next task:** Strict trust-policy parsing, only after confirmation of raw-input limits; repository, signer, and revocation collection limits; caller-specific JCS budgets; exact schema/timestamp validation; and duplicate-key/unknown-field rejection. Do not implement policy updates, authorization, revocation, protected state, snapshots, registry integration, or M2.3 unless separately authorized.
+- **Files modified:** `AGENTS.md`; `docs/continuity/AGENT-ONBOARDING.md`; `docs/continuity/PROJECT-CONTEXT.md`; `docs/continuity/HANDOFF.md`; `docs/development/CURRENT-STATUS.md`; `docs/development/NEXT-SESSION.md`; `docs/development/DEVELOPMENT-LOG.md`; `docs/development/TESTING-LOG.md`; `docs/development/ROADMAP.md`; and `docs/development/DECISIONS.md`.
+- **Documentation validation:** No application source or test files were changed. Documentation checks and their results are recorded in the accompanying testing-log entry. No Git/GitHub commands, network access, or DOCX access were used; no commit or push was made.
+
 ## 2026-10-20 — M2.2 Verification & Binding Documentation Closure
 
 - **Scope:** Synchronize canonical architecture, decision/status, validation, roadmap, and continuity records after accepted internal Ed25519 attestation verification and contextual binding. Documentation-only; no source, test, or fixture file was changed in this closure.
