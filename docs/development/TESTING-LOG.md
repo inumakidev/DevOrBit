@@ -196,6 +196,20 @@ The following focused results were observed during the Phase 1D implementation s
 
 The fixture contains independently assembled fixed-byte vectors and recorded SHA-256 values. The inconsistent version/path vector is a negative case; the canonical version/path mutation is separately tested as a valid binding. These tests verify framing only, not signature validity, source authenticity, or trust.
 
+## M2.2 Phase 1E focused verification — 2026-10-20
+
+Local results were observed during the Phase 1E implementation session. The user also reports successful validation. This evidence does not establish a full-suite, root lint/typecheck/build, push, or remote CI result.
+
+| Check | Observed result | Outcome |
+|---|---|---|
+| `pnpm exec vitest run tests/unit/registry/provenance/attestation-envelope.test.ts` | One focused test file passed; 25/25 tests passed. | PASS |
+| `pnpm exec biome check packages/registry/src/provenance/attestation-envelope.ts tests/unit/registry/provenance/attestation-envelope.test.ts tests/fixtures/registry/attestation-envelope-vectors.json` | Three authorized files checked; no fixes applied. | PASS |
+| Final read-only security and correctness audit | Audit recommendation: ACCEPT WITH FOLLOW-UP. No code blocker identified; stale continuity/status records were identified for documentation reconciliation. | ACCEPT WITH FOLLOW-UP |
+| Independent fixture digest check | PowerShell/.NET SHA-256 over the exact UTF-8 `rawEnvelope` yielded `e7198e5152556d2c0f90e97b9860a935a5d6b8c30b48596bb91f3207eaec2506`, matching the fixture. | PASS |
+| Full suite, root lint/typecheck/build, Phase 1E push, and remote CI | Not evidenced. Phase 1D remote CI was confirmed green by the user; that does not establish Phase 1E remote acceptance. | NOT VERIFIED |
+
+The parser computes SHA-256 over exact original envelope bytes; rejects malformed UTF-8, BOM, duplicate decoded JSON keys, invalid schema/claims, and noncanonical signatures; and enforces inclusive 64 KiB input, maximum container depth 8 (root counts as depth 1), and 128 parsed nodes (each JSON value and each object key counts). Parsing does not verify Ed25519 signatures, authorize or trust signers, bind claims to selected context or an `AssetRecord`, or make assets eligible.
+
 ## Next verification task
 
-Phase 1D remote CI acceptance remains pending confirmation. Once the user confirms the Phase 1D change has been pushed and its CI acceptance passed, the next task is M2.2 Phase 1E **READ-ONLY DISCOVERY**. Phase 1E has not been designed or approved here and is not implementation authorization. M2.2 remains **IN PROGRESS / INCOMPLETE**; M2.3 resolver remains **NOT STARTED**.
+The next task is read-only discovery of the next incomplete M2.2 capability, derived from the approved architecture and actual repository state. Do not assume Phase 1F's scope. Phase 1E is complete locally; push and remote CI acceptance await confirmation. M2.2 remains **IN PROGRESS / INCOMPLETE**; M2.3 resolver remains **NOT STARTED**.

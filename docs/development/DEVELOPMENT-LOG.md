@@ -2,6 +2,17 @@
 
 This log records actual work, not planned implementation. The statement that no toolkit source code existed applies to the initial documentation baseline below; later dated entries record the authorized M1 work.
 
+## 2026-10-20 — M2.2 Phase 1E Documentation Closure
+
+- **Scope:** Synchronize development and continuity records after the authorized Phase 1E strict detached-attestation envelope parser. Documentation only; the parser and tests were not modified in this closure.
+- **Implementation evidence:** Phase 1E implemented in exactly three files: `packages/registry/src/provenance/attestation-envelope.ts`, `tests/unit/registry/provenance/attestation-envelope.test.ts`, and `tests/fixtures/registry/attestation-envelope-vectors.json`.
+- **Behavior recorded:** Strict bounded JSON parsing detects duplicate decoded keys; rejects malformed UTF-8 and BOM; validates the exact envelope and nine claims; requires canonical unpadded base64url for a 64-byte signature; hashes exact raw envelope bytes; enforces 64 KiB, depth-8, and 128-node limits. Parsed claims remain untrusted; this parser does not verify signatures, apply trust, or bind contextual provenance.
+- **Local verification:** Focused Vitest passed 25/25; focused Biome passed. The final read-only security audit returned ACCEPT WITH FOLLOW-UP. The reviewer independently recomputed the raw-envelope fixture SHA-256 as `e7198e5152556d2c0f90e97b9860a935a5d6b8c30b48596bb91f3207eaec2506`.
+- **Remote status:** Phase 1D remote CI was previously confirmed green by the user. Phase 1E push and remote CI acceptance have not been confirmed and remain awaiting confirmation; no Phase 1E hash, run ID, or full-suite result is asserted.
+- **Files modified:** Exactly `docs/development/CURRENT-STATUS.md`, `DEVELOPMENT-LOG.md`, `TESTING-LOG.md`, `ROADMAP.md`, `NEXT-SESSION.md`, `docs/continuity/HANDOFF.md`, `PROJECT-CONTEXT.md`, and `AGENT-ONBOARDING.md`.
+- **Documentation issue:** Older status assertions in `AGENTS.md`, `docs/main/11-registry-and-resolver-architecture.md`, and `docs/development/DECISIONS.md` still describe stale Phase 1D/1E authorization and implementation state. They require a separately authorized reconciliation; none was edited here.
+- **Next task:** Read-only discovery of the next incomplete M2.2 capability. Do not assume Phase 1F scope or begin implementation. M2.2 remains IN PROGRESS; M2.3 remains NOT STARTED.
+
 ## 2026-10-19 — Documentation Foundation
 
 - **Scope:** Review both authoritative DOCX documents; inspect the workspace; after approval, create only the approved Markdown documentation files.
