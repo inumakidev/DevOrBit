@@ -232,18 +232,58 @@ Every listed top-level and nested property is required, including nullable `next
 | Policy | `issuedAt`, `expiresAt` | Timestamp strings in the exact UTC form below. |
 | Policy | `administrator` | Object containing required string fields `keyId` and `publicKey`. |
 | Policy | `nextAdministrator` | Required nullable field; null or object with the same required string fields as `administrator`. |
-| Policy | `repositories` | Required array of repository-ID strings. |
+| Policy | `repositories` | Required array of canonical lowercase ASCII `owner/repository` strings; reject noncanonical input. |
 | Policy | `authorizedSigners` | Required array of signer objects. |
 | Signer | `keyId`, `publicKey` | Required strings with the key constraints below. |
-| Signer | `repositoryIds` | Required array of repository-ID strings. |
+| Signer | `repositoryIds` | Required array of canonical lowercase ASCII `owner/repository` strings; reject noncanonical input. |
 | Signer | `validFrom`, `expiresAt` | Required timestamp strings in the exact UTC form below. |
 | Policy | `revocations` | Object containing required `signerKeyIds` and `repositoryIds` arrays of strings. |
 
-`format` is exactly `devorbit-trust-policy-v1`. `sequence` is an integer in `1..2^53-1`. Timestamps use exactly `YYYY-MM-DDTHH:mm:ss.sssZ`, are valid Gregorian UTC values, and have no offsets or leap seconds. `expiresAt` is exactly 720 hours after `issuedAt`; policy validity is half-open, `issuedAt <= evaluationTime < expiresAt`. Each signer's repository IDs must be a subset of `repositories`, and its validity interval must fall within the policy validity interval. Repository IDs are normalized lowercase ASCII `owner/repository`; reject invalid values rather than trimming or repairing them.
+`format` is exactly `devorbit-trust-policy-v1`. `sequence` is an integer in `1..2^53-1`. Timestamps use exactly `YYYY-MM-DDTHH:mm:ss.sssZ`, are valid Gregorian UTC values, and have no offsets or leap seconds. `expiresAt` is exactly 720 hours after `issuedAt`; policy validity is half-open, `issuedAt <= evaluationTime < expiresAt`. Each signer's repository IDs must be a subset of `repositories`, and its validity interval must fall within the policy validity interval. Repository IDs must already be canonical lowercase ASCII `owner/repository`; reject uppercase or otherwise noncanonical values rather than normalizing, trimming, or repairing them. This policy-specific requirement does not change M1 repository-ID validation behavior.
 
 All string arrays are unique and sorted by ordinal ASCII comparison, including `repositories`, each signer's `repositoryIds`, and both revocation arrays. Sort the `authorizedSigners` array in ascending ordinal ASCII order by each object's `keyId`; reject duplicate `keyId` values. Ed25519 public keys are raw 32-byte values encoded as canonical unpadded base64url; decoding then re-encoding must reproduce the input. `keyId` is `sha256:` followed by lowercase hexadecimal SHA-256 of the 32 raw public-key bytes, and must match the supplied key. A revoked signer or repository cannot authorize an asset, even if an attestation claims an earlier signing time.
 
 Strict policy parsing decodes UTF-8 without BOM and rejects malformed UTF-8, duplicate keys, unknown properties, invalid types/values, unsupported format versions, unsorted or duplicate array members, invalid key encodings, and key-ID/fingerprint mismatches before RFC 8785 JCS canonicalization. `policyDigest` is lowercase hexadecimal SHA-256 of the canonical UTF-8 policy bytes.
+
+Policy input accepts valid JSON whitespace and property-order variations. Duplicate object keys are rejected after JSON string decoding, so escaped aliases of the same key are duplicates. The policy digest is computed from RFC 8785 canonical UTF-8 bytes, not the original JSON text. Sequence JSON number syntax may use equivalent exact decimal representations such as `1`, `1.0`, or `1e0`; accept only values whose exact decimal mathematical value is an integer in `1..2^53-1`. Reject fractional values even if conversion to IEEE-754 binary64 would round them to an integer. Implementations must preserve or validate the number token's exact value before lossy binary64 conversion.
+
+Policy timestamps use exactly `YYYY-MM-DDTHH:mm:ss.sssZ`; years are `0001` through `9999`, values must be valid Gregorian UTC dates and times, and leap seconds, offsets, and alternate forms are rejected. The policy parser validates timestamp grammar and policy/signer interval relationships but does not reject a structurally valid policy merely because it is expired at the current clock. Policy lifetime is exactly 720 hours. Signer validity is a nonempty half-open interval fully contained in policy validity.
+
+Repository IDs in policy documents must already use the canonical lowercase ASCII `owner/repository` form. Reject uppercase or otherwise noncanonical forms; do not trim, repair, or normalize them. This policy-specific rule does not change M1 repository-ID validation, which continues to accept the previously defined case-insensitive input form.
+
+### Approved policy parsing resource limits
+
+The following inclusive limits apply to the strict trust-policy parsing caller only. Collection limits are ceilings and are additionally constrained by the raw policy byte limit. They do not change limits for other JCS callers or the approved complete-snapshot cap in §8.
+
+| Resource | Approved limit |
+| --- | ---: |
+| Raw trust-policy input | 1 MiB (1,048,576 bytes) |
+| Canonical JCS policy output | 1 MiB (1,048,576 bytes) |
+| Repositories | 10,000 |
+| Authorized signers | 10,000 |
+| Repository IDs per authorized signer | 10,000 |
+| Revoked signer IDs | 10,000 |
+| Revoked repository IDs | 10,000 |
+| Future raw signed-update envelope | 2 MiB (2,097,152 bytes) |
+
+Reject oversized raw input before UTF-8 decoding. The 2 MiB update-envelope limit is reserved for future update parsing; it does not authorize implementing or verifying updates in the policy parser.
+
+The policy JCS caller supplies this resource budget; it is not a global JCS default:
+
+| JCS budget | Inclusive limit |
+| --- | ---: |
+| `maxDepth` | 64 |
+| `maxNodes` | 1,000,000 JSON values |
+| `maxPropertiesPerObject` | 10,000 |
+| `maxStringUtf8Bytes` | 1,048,576 |
+| `maxTotalStringUtf8Bytes` | 1,048,576 |
+| `maxOutputBytes` | 1,048,576 |
+
+JCS node accounting counts JSON values. A strict parser may separately count decoded object keys in its parser resource budget; document that accounting and its limit explicitly. It must not silently impose a parser node limit that conflicts with valid policies under the approved raw-byte and collection ceilings. Keep the approved 64 MiB complete canonical-snapshot byte limit in §8 unchanged.
+
+The strict parser accepts raw `Uint8Array` input, enforces the raw-byte cap before decoding, rejects UTF-8 BOM and malformed UTF-8, and uses stable internal typed errors with non-sensitive messages. It validates the exact policy schema, canonical arrays, key encodings/fingerprints, repository scopes, timestamps, and intervals, then returns the policy digest derived from canonical JCS bytes. Revocation lists are structurally validated here; authorization and eligibility effects belong to later trust evaluation.
+
+**Parser boundary:** strict parsing and digest computation do not authenticate an administrator, verify signed policy updates or update-chain continuity, authorize repositories or signers, apply revocations to asset eligibility, verify protected high-water state, access filesystem/Git/network, discover registry content, or implement resolver behavior. The parser remains internal and is not exported through the registry package barrel.
 
 The required signed-update envelope structure is:
 
