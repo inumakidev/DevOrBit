@@ -2,16 +2,16 @@
 
 ## 1. Status and scope
 
-**Architecture status:** Approved by the user.  
-**M2.1 documentation closure:** Complete.  
-**M2.2 design freeze:** Approved; seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021–ADR-024) are synchronized; final user acceptance is pending.  
-**Implementation status:** No M2.2 registry implementation is claimed.  
-**Tests:** No M2.2 tests have been executed.  
-**M2.2 implementation:** Not authorized.  
-**M2.3–M2.5:** Not started.  
+**Architecture status:** Approved by the user.
+**M2.1 documentation closure:** Complete.
+**M2.2 design freeze:** Approved and accepted; seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021–ADR-024) are synchronized.
+**Implementation status:** M2.2 is in progress. Phases 1B–1E and internal Ed25519 verification/context binding are implemented and accepted; user confirms push and green GitHub Actions. No commit hash or run ID is asserted.
+**Validation evidence:** The last explicitly observed full suite was 135/135; the user separately reports successful full validation without a newer count. The verifier focused suite passed 24/24, registry package typecheck and focused Biome passed. These results do not complete the full M2.2 acceptance matrix.
+**M2.2 remaining:** Trust-policy authorization, revocation, aggregation/conflict reconciliation, protected state, Git verification, registry discovery, and remaining approved integration/security acceptance work are incomplete.
+**M2.3–M2.5:** Not started.
 **CLI integration:** Deferred.
 
-This document is the canonical Markdown reference for the approved M2.1 architecture and M2.2 design freeze. Approved design is not implementation evidence. Proposed APIs and diagnostics are design contracts, not existing exports or verified behavior. Windows/Git/OS security capabilities remain unverified until implementation-time validation.
+This document is the canonical Markdown reference for the approved M2.1 architecture and M2.2 design freeze. Approved design is not implementation evidence. APIs and diagnostics that remain only proposed are design contracts, not existing exports or verified behavior; the accepted internal verifier is not a public registry export. Windows/Git/OS security capabilities remain unverified until implementation-time validation.
 
 Approved M2 scope is internal registry and resolver libraries only. Preserve M1 public contracts, manifest schema and semantics, error codes, and accepted tests. M2 does not include installation, project-file writes, a remote marketplace, network access, or CLI integration.
 
@@ -20,7 +20,7 @@ Approved M2 scope is internal registry and resolver libraries only. Preserve M1 
 | Package | Responsibility | Status |
 | --- | --- | --- |
 | `@devorbit/core` | Existing M1 manifest contracts, parsing, and errors. | Implemented and accepted for M1; preserve unchanged. |
-| `@devorbit/registry` | Local source discovery, manifest ingestion, content integrity, detached provenance, source trust, immutable snapshots, and freshness checks. | Planned internal library; not implemented. |
+| `@devorbit/registry` | Local source discovery, manifest ingestion, content integrity, detached provenance, source trust, immutable snapshots, and freshness checks. | Partially implemented: Phases 1B–1E and internal verification/context binding accepted; remaining registry capabilities are incomplete. |
 | `@devorbit/resolver` | Deterministic dependency and compatibility planning over authenticated registry data. | Planned internal library; not implemented. |
 
 Registry handles effectful local reads and trust verification. Resolver's solver is pure over an immutable registry view: no filesystem, Git, network, project writes, or content execution. A registry boundary validates snapshot issuance and policy freshness before invoking the pure solver and checks freshness again before returning success.
@@ -600,11 +600,11 @@ Every row is an approved acceptance requirement or a proposed test mapping; **al
 | Input-order independence | Canonical snapshots, plans, and diagnostics equivalent | Determinism suite — **NOT EXECUTED** |
 | Offline/read-only guarantee | No network, writes, deletes, renames, or content execution | Instrumented integration/security — **NOT EXECUTED** |
 
-No test count, golden digest, or pass result is claimed.
+This table records the original matrix checkpoint, not current implementation status. Focused test evidence for implemented Phase 1B–1E and verifier slices is recorded in [TESTING-LOG.md](../development/TESTING-LOG.md). Most full-chain acceptance groups below remain **NOT EXECUTED**; the last explicitly observed full-suite result is 135/135 and does not establish completion of those groups.
 
 ## 13. Independent vectors and implementation-time security gates
 
-The approved test-vector process requires fixed raw-byte and hexadecimal fixtures, independently implemented generator and verifier, and manual byte-level review. Include positive and negative cases for framing, ordering, empty files, unsafe paths, digest changes, canonical JSON, attestations, policy chains, protected-state records, Git object identity/framing/parsing, and resource boundaries. Publish no fabricated digest outputs. No M2.2 tests or vectors are claimed as executed.
+The approved test-vector process requires fixed raw-byte and hexadecimal fixtures, independently implemented generator and verifier, and manual byte-level review. Include positive and negative cases for framing, ordering, empty files, unsafe paths, digest changes, canonical JSON, attestations, policy chains, protected-state records, Git object identity/framing/parsing, and resource boundaries. Implemented Phase 1D and verifier slices have fixed independent framing/key/signature vectors; Phase 1E has an independent exact-envelope digest vector. Additional vectors and tests remain required for policy chains, protected-state records, Git object identity/framing/parsing, remaining resource boundaries, and full integration. Do not treat completed-slice vectors as evidence for unimplemented capabilities.
 
 Approved design requirements are not verified implementation guarantees. The following require explicit implementation-time validation, including Windows-specific evidence:
 
@@ -625,9 +625,9 @@ Deferred: CLI integration, installer/project writes, remote marketplace, network
 | Checkpoint | Scope and proposed files | Acceptance gate |
 | --- | --- | --- |
 | M2.1 — Architecture & Decision Baseline | This document and targeted status/decision records | Architecture approved; documentation closure validated. |
-| M2.2 — Registry, Integrity & Provenance | Proposed `packages/registry/**`; registry fixtures/unit/integration/security tests | Design freeze approved; implementation requires a separate authorization; only fully verified entries eligible. |
+| M2.2 — Registry, Integrity & Provenance | `packages/registry/**`; registry fixtures/unit/integration/security tests | In progress. Implemented slices are accepted; complete the remaining approved requirements and acceptance matrix under separate authorization. |
 | M2.3 — Dependency & Compatibility Resolver | Proposed `packages/resolver/**`; resolver fixtures and unit tests | Not started; global deterministic constraints, cycle backtracking, compatibility, and bounds. |
 | M2.4 — Plans & Diagnostics | Plan, optional-branch, and diagnostic modules/tests | Stable explainable plan; no partial success; optional rollback behavior verified. |
 | M2.5 — Acceptance Testing | Full unit/integration/security matrix and authorized status records | Every approved mandatory case has observed evidence; no M2 test is treated as passed before execution. |
 
-Every implementation checkpoint requires its own authorization. M2.2 design is approved; specification synchronization is complete, including the seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021–ADR-024); final user acceptance remains pending. M2.2 implementation is NOT AUTHORIZED. M2.3 is NOT STARTED; M2.2 tests are NOT EXECUTED.
+Every implementation checkpoint requires its own authorization. M2.2 design is approved and accepted; specification synchronization is complete, including the seven exact-parameter groups and Clarification Amendments v1.0–v1.3 (ADR-021–ADR-024). Phase 1B–1E and internal Ed25519 verification/context binding are implemented and accepted; user confirms push and green GitHub Actions. This does not complete M2.2 or authorize the next implementation slice. The next activity is read-only discovery/design of the next incomplete M2.2 capability; do not assign a phase label. M2.3 is NOT STARTED. See the dated implementation and evidence record in [DEVELOPMENT-LOG.md](../development/DEVELOPMENT-LOG.md) and [TESTING-LOG.md](../development/TESTING-LOG.md).

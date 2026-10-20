@@ -210,6 +210,26 @@ Local results were observed during the Phase 1E implementation session. The user
 
 The parser computes SHA-256 over exact original envelope bytes; rejects malformed UTF-8, BOM, duplicate decoded JSON keys, invalid schema/claims, and noncanonical signatures; and enforces inclusive 64 KiB input, maximum container depth 8 (root counts as depth 1), and 128 parsed nodes (each JSON value and each object key counts). Parsing does not verify Ed25519 signatures, authorize or trust signers, bind claims to selected context or an `AssetRecord`, or make assets eligible.
 
-## Next verification task
+## M2.2 Ed25519 verification and contextual binding — 2026-10-20
 
-The next task is read-only discovery of the next incomplete M2.2 capability, derived from the approved architecture and actual repository state. Do not assume Phase 1F's scope. Phase 1E is complete locally; push and remote CI acceptance await confirmation. M2.2 remains **IN PROGRESS / INCOMPLETE**; M2.3 resolver remains **NOT STARTED**.
+The implementation and remote acceptance status in this entry are based on user confirmation where specified. No GitHub run ID or commit hash was provided. The last explicitly observed full-suite result is 135/135; the user separately reports successful full validation, but no newer full-suite count is asserted.
+
+| Check | Observed result | Outcome |
+|---|---|---|
+| `pnpm exec vitest run tests/unit/registry/provenance/attestation-verification.test.ts` | Focused verifier suite passed 24/24, including full-string validation regression cases. | PASS |
+| `pnpm --filter @devorbit/registry typecheck` | Registry package typecheck passed after the local `assetValue` runtime guard was narrowed explicitly. | PASS |
+| `pnpm exec biome check packages/registry/src/provenance/attestation-verification.ts` | Focused Biome check passed. | PASS |
+| Full validation | User reports successful full validation. Exact individual commands and a newer full-suite count were not provided here. | User-reported PASS; details not independently verified in this documentation closure |
+| Push and GitHub Actions | User confirms implementation was pushed and GitHub Actions passed. | User-confirmed PASS; no commit hash or run ID asserted |
+
+The verifier consumes a parsed Phase 1E envelope, caller-selected repository and pinned revision, a validated Phase 1C `AssetRecord`, and an externally supplied raw 32-byte Ed25519 key. It derives `sha256:` plus lowercase SHA-256 of only the raw public-key bytes, calls Phase 1D `frameAttestation`, checks all nine claims, and verifies the signature over the framed bytes using Node built-in Ed25519 verification. Runtime input checks reject terminal LF, CR, and CRLF in exact repository, revision, and digest values without trimming or repairing them. Typed failures distinguish invalid input, binding mismatch, key mismatch, and invalid signature with one generic message.
+
+Acceptance establishes cryptographic signature validity and contextual consistency only. It does not authorize signers, evaluate trust policy, handle revocation or aggregation/conflicts, maintain protected state, verify Git objects, discover registry assets, or make assets eligible. M2.2 remains **IN PROGRESS / INCOMPLETE**; M2.3 remains **NOT STARTED**.
+
+## Historical next verification task at Phase 1E checkpoint
+
+At that earlier checkpoint, the next task was read-only discovery of the next incomplete M2.2 capability and Phase 1E push/remote acceptance was awaiting confirmation. Those statements are superseded by the verification/binding implementation and user-confirmed push/green Actions recorded above.
+
+## Current next verification task
+
+Perform read-only discovery/design of the next incomplete M2.2 capability, based on the approved architecture and actual repository. Do not assume or assign a phase label, implement the discovered capability, or begin M2.3. M2.2 remains **IN PROGRESS / INCOMPLETE**; M2.3 remains **NOT STARTED**.
