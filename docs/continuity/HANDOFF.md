@@ -1,6 +1,6 @@
 # Development handoff
 
-**Updated:** 2026-10-20 — M2.2 Phase 1B Documentation Status Reconciliation
+**Updated:** 2026-10-20 — M2.2 Phase 1C Documentation Closure
 
 ## Current checkpoint
 
@@ -17,18 +17,20 @@
 | M2.1 — Registry & Resolver architecture | **Complete**. |
 | M2.2 design and documentation | **ACCEPTED / PUSHED** per user report; baseline commit `21dbe8a` user-reported; seven exact-parameter groups synchronized; ADR-021 through ADR-024 approved and documented. |
 | M2.2 Registry Phase 1A read-only preflight | **COMPLETED**; inspection and planning only. |
-| M2.2 Phase 1B asset-tree integrity | **ACCEPTED / COMMITTED LOCALLY** as `f76428d` per user report; **NOT YET PUSHED**. |
-| Phase 1B validation | 22/22 focused tests, root typecheck, Biome, 4/4 independent SHA-256 fixture checks, and registry package build **passed per user report**. |
+| M2.2 Phase 1B asset-tree integrity | **COMPLETE / ACCEPTED / PUSHED / CI PASSED** per user report. |
+| M2.2 Phase 1C manifest-to-content record binding | **COMPLETE / ACCEPTED / PUSHED / CI PASSED** per user report. |
+| M2.2 local validation | `pnpm lint`, `pnpm typecheck`, `pnpm build` passed; `pnpm test` 70/70 (M1 29, Phase 1B 22, Phase 1C 19), all per user report. |
+| CI build-order remediation | Dedicated core build step added before root typecheck after clean-checkout package-resolution failure; latest workflow passed per user report. |
 | M2.2 overall implementation | **IN PROGRESS / INCOMPLETE**. |
 | M2.3 resolver | **NOT STARTED**. |
 | Phase 4 — Controlled Implementation | **In progress**; overall M2.2 implementation is incomplete; no deployment or release is claimed. |
 | M1.2B contract tests | **29 reported passing**; not rerun during the read-only acceptance audit. |
 | GitHub repository | User confirms private `inumakidev/DevOrBit`, branch `master`; initial commit pushed to `origin/master`. |
 | Hosted GitHub Actions | Successful per user-provided screenshots: `Workspace validation` run #1 / ID `39215771440`; `validate` job ID `117939137329`. |
-| Completed this session | M2.2 Phase 1B documentation status synchronized to the user-reported acceptance and local commit state; Phase 1A read-only preflight remains completed. |
-| Next task | Track remaining M2.2 work; obtain separate authorization before the next implementation slice. |
+| Completed this session | M2.2 Phase 1C documentation closure; Phase 1A read-only preflight and Phase 1B/1C implementation closures are recorded per user reports. |
+| Next task | M2.2 Phase 1D **READ-ONLY DISCOVERY AND PLANNING**; no Phase 1D implementation is authorized. |
 
-The canonical M2.2 design, seven exact-parameter groups, and approved Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are documented in [11-registry-and-resolver-architecture.md](../main/11-registry-and-resolver-architecture.md) and [DECISIONS.md](../development/DECISIONS.md). M1 remains **Complete / Accepted / Pushed**; M2.1 architecture is **Complete**. M2.2 design and documentation are accepted and pushed according to the user; baseline commit `21dbe8a` is user-reported. Phase 1B asset-tree integrity is accepted and committed locally as `f76428d` per user report, but not pushed; Phase 1B validation results are user-reported. Overall M2.2 implementation remains **IN PROGRESS / INCOMPLETE**. M2.3 is **NOT STARTED**.
+The canonical M2.2 design, seven exact-parameter groups, and approved Clarification Amendments v1.0–v1.3 (ADR-021 through ADR-024) are documented in [11-registry-and-resolver-architecture.md](../main/11-registry-and-resolver-architecture.md) and [DECISIONS.md](../development/DECISIONS.md). M1 remains **Complete / Accepted / Pushed**; M2.1 architecture is **Complete / Accepted / Pushed**. M2.2 design/specifications are **Complete / Accepted**. Phase 1B and Phase 1C are **Complete / Accepted / Pushed**, with CI passed per user report. Local lint, typecheck, build, and 70/70 tests (M1 29, Phase 1B 22, Phase 1C 19) are reported passed. Overall M2.2 implementation remains **IN PROGRESS / INCOMPLETE**. M2.3 is **NOT STARTED**. No Phase 1B/1C commit hashes or workflow run numbers are asserted.
 
 **Historical audit finding, superseded by approved ADR-021:** the final documentation audit identified the `authorizedSigners` ordering comparator, diagnostic comparator, and 256-attestation count scope as clarification items. ADR-021 and the canonical specification now resolve these items: sort `authorizedSigners` by ascending ordinal ASCII `keyId` and reject duplicates; order diagnostics by `(code, severity, assetId, assetVersion, path, message)` using ordinal comparison and empty strings for absent optional fields; cap detached attestation envelopes at 256 per asset-version lookup, counted before cryptographic validation.
 
@@ -38,7 +40,7 @@ This preserves the audit-time record of the ADR-021 clarification. ADR-024 later
 
 All nine specification groups are approved at design level: (1) registry layout and file-only integrity; (2) detached Ed25519 attestations; (3) trust-policy protocol; (4) protected high-water state; (5) restricted Git object verification; (6) commit/tree parsing; (7) pinned asset binding; (8) bounded resources, diagnostics, and snapshots; and (9) independent test vectors. The Final Protocol Amendment supersedes conflicting earlier proposals, including the administrator rotation rule and commit parser compatibility. Detailed normative requirements are kept in the canonical architecture document rather than duplicated here.
 
-**Implementation boundary:** Phase 1B is the only M2.2 implementation slice reported accepted and committed locally; no push is reported. Overall M2.2 remains incomplete. Obtain separate authorization before any subsequent implementation slice. M2.3 is **NOT STARTED**.
+**Implementation boundary:** Phase 1B asset-tree integrity and Phase 1C manifest-to-content record binding are the completed slices recorded here. Phase 1C is an internal pure helper with exact raw-manifest hashing, strict UTF-8/BOM handling, one-asset and exact identity/version/provenance binding, reused Phase 1B integrity computation, internal M2 failure classifications, and unchanged M1 validation behavior. It exposes no new public registry API and does not perform filesystem discovery, trust verification, Git-object access, or resolver work. Overall M2.2 remains incomplete. Next is Phase 1D **READ-ONLY DISCOVERY AND PLANNING**; it has not been designed, approved, or implemented. M2.3 is **NOT STARTED**.
 
 **Outstanding implementation-time Windows/Git/OS validation gates:** ACL enforcement; OS-protected key behavior and provider integrity; reparse-point and executable-substitution defenses; Git configuration isolation; actual no-network/no-write behavior; process-tree termination; source mutation/filesystem-race handling; crash consistency; and the supported Windows/Git compatibility baseline. No Windows security testing has been completed or claimed. Privileged rollback by restoring both policy and protected state remains an explicit limitation.
 

@@ -153,13 +153,36 @@ Never convert a planned test into a pass or invent benchmark results. Mandatory 
 
 ## M2 — Registry & Resolver acceptance criteria
 
-The M2 acceptance matrix is an approved design requirement, not a report of executed tests. M2.2 design is approved, but no implementation or tests have started. See the [canonical registry and resolver specification](../main/11-registry-and-resolver-architecture.md) for the exact frozen protocol, mandatory acceptance cases, limits, and implementation-time security gates.
+The M2 acceptance matrix is an approved design requirement, not a report of executed tests. The original M2.2 and M2.3 rows below record their earlier not-executed checkpoint and are superseded for M2.2 Phase 1B/1C by the dated evidence that follows this matrix. See the [canonical registry and resolver specification](../main/11-registry-and-resolver-architecture.md) for the exact frozen protocol, mandatory acceptance cases, limits, and implementation-time security gates.
 
 | Check group | Expected evidence | Observed result | Outcome |
 |---|---|---|---|
-| M2.2 registry, file-only integrity, attestation, trust-policy, protected-state, Git-object, binding, snapshot, diagnostics, and resource-boundary matrix | Exact positive/negative evidence for every approved requirement; boundary behavior is inclusive and overflow fails closed. | M2.2 implementation has not started; no M2.2 tests were executed. | **NOT EXECUTED** |
+| M2.2 registry, file-only integrity, attestation, trust-policy, protected-state, Git-object, binding, snapshot, diagnostics, and resource-boundary matrix | Exact positive/negative evidence for every approved requirement; boundary behavior is inclusive and overflow fails closed. | At the original matrix checkpoint, M2.2 implementation had not started and no M2.2 tests had been executed. Phase 1B/1C results are recorded below. | **NOT EXECUTED at original checkpoint** |
 | M2.2 independent fixed-byte vectors | Independently generated and verified raw-byte/hex fixtures with manual byte-level review; no fabricated outputs. | No vectors generated or claimed. | **NOT EXECUTED** |
 | M2.2 Windows/Git/OS security validation | Evidence for ACLs, protected keys, reparse points, executable substitution, config isolation, offline/read-only behavior, process-tree termination, races, and supported baseline. | No M2.2 adapter or Windows security result is claimed. | **NOT EXECUTED** |
 | M2.3 resolver and plan matrix | Deterministic dependency/compatibility solving, rollback semantics, diagnostics, and bounded failure behavior. | M2.3 has not started. | **NOT EXECUTED** |
 
-The matrix is not a passing test result. Every M2.2 test result remains **NOT EXECUTED**. Do not infer M2 verification from M1 tests or hosted M1 CI. Windows security testing has not been completed.
+The matrix is not a passing test result for the historical checkpoint it records. It does not supersede the later Phase 1B/1C evidence below. Windows security testing has not been completed.
+
+## M2.2 Phase 1B/1C local and CI evidence — 2026-10-20
+
+The following results are user-reported. They were not independently rerun for this documentation closure.
+
+| Check | Observed result | Outcome |
+|---|---|---|
+| `pnpm lint` | Passed locally. | Reported PASS |
+| `pnpm typecheck` | Passed locally. | Reported PASS |
+| `pnpm build` | Passed locally. | Reported PASS |
+| `pnpm test` | 70/70 tests passed: M1 29, Phase 1B 22, Phase 1C 19. | Reported PASS |
+| Phase 1B CI | Accepted and pushed; CI passed per user report. | Reported PASS |
+| Phase 1C CI | Initial validation encountered fixture-formatting and clean-checkout `@devorbit/core` resolution failures. A dedicated core build step was added before root typecheck; the user reports the latest workflow passed. | Reported PASS after remediation |
+
+The workflow remediation changes build order only: core is built before root typecheck so its declared `dist` type exports exist on a clean checkout. No workflow run number, commit hash, or CI test count is asserted. The CI evidence is user-reported and was not independently retrieved. M2.2 overall remains **IN PROGRESS / INCOMPLETE**; these results do not indicate full M2.2 completion, deployment, or release.
+
+### Phase 1C scope and verification boundary
+
+Phase 1C implements an internal pure manifest-to-content record-binding helper. It hashes exact raw manifest bytes separately from the content-tree digest; strictly decodes UTF-8 and rejects a BOM; requires one asset; binds exact identity, version, and provenance directory; reuses Phase 1B asset-tree integrity computation; uses internal M2 failure classifications; and preserves existing M1 validation behavior. It adds no public registry API and does not implement filesystem discovery, trust verification, Git-object access, or resolver behavior.
+
+## Next verification task
+
+M2.2 Phase 1D is **READ-ONLY DISCOVERY AND PLANNING** only. It is not yet designed, approved, or implemented. No Phase 1D tests or implementation are claimed. M2.3 resolver remains **NOT STARTED**.
