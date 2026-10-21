@@ -1,0 +1,59 @@
+{
+  "vectors": [
+    {
+      "name": "minimum-policy",
+      "policy": {
+        "format": "devorbit-trust-policy-v1",
+        "sequence": 1,
+        "issuedAt": "2026-01-01T00:00:00.000Z",
+        "expiresAt": "2026-01-31T00:00:00.000Z",
+        "administrator": {
+          "keyId": "sha256:66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+          "publicKey": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "nextAdministrator": null,
+        "repositories": [],
+        "authorizedSigners": [],
+        "revocations": {
+          "signerKeyIds": [],
+          "repositoryIds": []
+        }
+      },
+      "canonicalPolicy": "{\"administrator\":{\"keyId\":\"sha256:66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925\",\"publicKey\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"},\"authorizedSigners\":[],\"expiresAt\":\"2026-01-31T00:00:00.000Z\",\"format\":\"devorbit-trust-policy-v1\",\"issuedAt\":\"2026-01-01T00:00:00.000Z\",\"nextAdministrator\":null,\"repositories\":[],\"revocations\":{\"repositoryIds\":[],\"signerKeyIds\":[]},\"sequence\":1}",
+      "policyDigest": "4d5a3747c889158dc753a0fcd13b6fbdd58de03f9cc78490bd113cad7d66bd08"
+    },
+    {
+      "name": "policy-with-successor-and-signer",
+      "policy": {
+        "format": "devorbit-trust-policy-v1",
+        "sequence": 1,
+        "issuedAt": "2026-01-01T00:00:00.000Z",
+        "expiresAt": "2026-01-31T00:00:00.000Z",
+        "administrator": {
+          "keyId": "sha256:66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+          "publicKey": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        },
+        "nextAdministrator": {
+          "keyId": "sha256:72cd6e8422c407fb6d098690f1130b7ded7ec2f7f5e1d30bd9d521f015363793",
+          "publicKey": "AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQE"
+        },
+        "repositories": ["owner/repo"],
+        "authorizedSigners": [
+          {
+            "keyId": "sha256:75877bb41d393b5fb8455ce60ecd8dda001d06316496b14dfa7f895656eeca4a",
+            "publicKey": "AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI",
+            "repositoryIds": ["owner/repo"],
+            "validFrom": "2026-01-01T00:00:00.000Z",
+            "expiresAt": "2026-01-31T00:00:00.000Z"
+          }
+        ],
+        "revocations": {
+          "signerKeyIds": [],
+          "repositoryIds": []
+        }
+      },
+      "canonicalPolicy": "{\"administrator\":{\"keyId\":\"sha256:66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925\",\"publicKey\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"},\"authorizedSigners\":[{\"expiresAt\":\"2026-01-31T00:00:00.000Z\",\"keyId\":\"sha256:75877bb41d393b5fb8455ce60ecd8dda001d06316496b14dfa7f895656eeca4a\",\"publicKey\":\"AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI\",\"repositoryIds\":[\"owner/repo\"],\"validFrom\":\"2026-01-01T00:00:00.000Z\"}],\"expiresAt\":\"2026-01-31T00:00:00.000Z\",\"format\":\"devorbit-trust-policy-v1\",\"issuedAt\":\"2026-01-01T00:00:00.000Z\",\"nextAdministrator\":{\"keyId\":\"sha256:72cd6e8422c407fb6d098690f1130b7ded7ec2f7f5e1d30bd9d521f015363793\",\"publicKey\":\"AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQE\"},\"repositories\":[\"owner/repo\"],\"revocations\":{\"repositoryIds\":[],\"signerKeyIds\":[]},\"sequence\":1}",
+      "policyDigest": "32fa2ea1d5831e8b94468f4f6b17c77a9553b003501b0fbc5625c65d9a762e97"
+    }
+  ]
+}
