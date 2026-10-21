@@ -2,6 +2,16 @@
 
 This log records actual work, not planned implementation. The statement that no toolkit source code existed applies to the initial documentation baseline below; later dated entries record the authorized M1 work.
 
+## 2026-10-21 — M2.2 Strict Trust-Policy Parser Documentation Closure
+
+- **Scope:** Documentation-only closure recording the user-accepted strict trust-policy parser and updated M2.2 next-task boundaries. No source, test, fixture, dependency, or architecture file was changed.
+- **Implementation recorded:** `packages/registry/src/provenance/trust-policy.ts`; `tests/unit/registry/provenance/trust-policy.test.ts`; and `tests/fixtures/registry/trust-policy-vectors.json`. The parser is internal and outside public exports; it validates bounded raw policy JSON, exact schema and approved policy constraints, and computes the SHA-256 digest over RFC 8785 JCS policy bytes. It does not implement update parsing, signature verification, bootstrap/trust-chain verification, authorization, revocation enforcement, or protected state.
+- **Validation evidence:** Copilot reported 25/25 focused tests, 181/181 full-suite tests, Biome/lint, typecheck, and build passing. A command-prefix/import defect was subsequently found during GitHub Actions validation. The user corrected the test import and confirms validation now passes. The corrected result is user-confirmed, not independently rerun in this documentation closure; no post-correction count, CI run ID, or commit hash was supplied.
+- **Current status:** Strict trust-policy parsing is **IMPLEMENTED / ACCEPTED**. M2.2 remains **IN PROGRESS / INCOMPLETE**. Signed update-envelope parsing/verification, bootstrap/trust-chain verification, signer authorization, revocation enforcement, protected high-water state, and registry integration remain **NOT STARTED**. M2.3, M2.4, M2.5, and M3 remain **NOT STARTED**.
+- **Next target and prerequisites:** Signed trust-policy update-envelope parsing and verification according to the approved architecture. The 2 MiB raw-envelope cap, envelope fields, signature framing, and semantic relationships are specified. Resolve update-parser JSON-work budgets and trusted verification input/bootstrap boundaries before implementation; the full policy-chain retrieval adapter remains unfrozen. Separate implementation authorization is required.
+- **Documentation files modified:** `AGENTS.md`; `docs/continuity/AGENT-ONBOARDING.md`; `docs/continuity/PROJECT-CONTEXT.md`; `docs/continuity/HANDOFF.md`; `docs/development/CURRENT-STATUS.md`; `docs/development/NEXT-SESSION.md`; `docs/development/DEVELOPMENT-LOG.md`; `docs/development/TESTING-LOG.md`; `docs/development/ROADMAP.md`; and `docs/development/DECISIONS.md`.
+- **Documentation validation/operations:** Markdown consistency, UTF-8, and local Markdown-reference checks are recorded in [TESTING-LOG.md](TESTING-LOG.md). No application tests/builds/source lint, Git/GitHub commands, network access, or DOCX access were performed for this documentation closure. No commit or push was made.
+
 ## 2026-10-20 — M2.2 JCS Documentation Closure
 
 - **Scope:** Documentation-only update recording acceptance of the internal RFC 8785 JCS canonicalizer and setting strict trust-policy parsing as the next gated implementation target. M2.2 remains IN PROGRESS / INCOMPLETE; M2.3 remains NOT STARTED.
